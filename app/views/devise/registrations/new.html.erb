@@ -1,15 +1,26 @@
 <div class="main">
-  <div class="card devise-card">
+  <div class="card devise-card col-lg-6 mx-auto">
     <div class="form-wrap">
       <div class="form-group text-center">
         <h2 class="sign-logo">STUDIO DIG</h2>
         <p class="text-secondary">お気に入りのスタジオを見つけよう</p>
       </div>
+
+      <div class="error-message">
+        <% if @user.errors.any?%>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
         <div class="form-group">
           <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control" %>
-        </div>      
-      
+        </div>
+
         <div class="form-group">
           <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
         </div>
