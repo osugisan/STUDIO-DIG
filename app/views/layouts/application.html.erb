@@ -5,11 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <%= render 'layouts/navbar' %>
+
+    <%= render 'layouts/flash' %>
+
     <%= yield %>
+
+    <div class="fixed-bottom">
+      <footer class="footer mt-auto py-3">
+        <div class="container">
+          <p class="text-muted">©2020 StadioDig All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
