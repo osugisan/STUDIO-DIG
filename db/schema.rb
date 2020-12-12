@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_065621) do
+ActiveRecord::Schema.define(version: 2020_12_12_083328) do
+
+  create_table "studio_tags", force: :cascade do |t|
+    t.integer "studio_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_studio_tags_on_studio_id"
+    t.index ["tag_id"], name: "index_studio_tags_on_tag_id"
+  end
 
   create_table "studios", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,6 +31,12 @@ ActiveRecord::Schema.define(version: 2020_12_12_065621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_studios_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
