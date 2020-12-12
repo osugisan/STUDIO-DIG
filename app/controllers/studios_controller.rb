@@ -24,6 +24,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     if @studio.update(studio_params)
       redirect_to studio_path(@studio)
+      flash[:notice] = "投稿が更新されました"
     else
       render 'edit'
     end
@@ -33,6 +34,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     @studio.destroy
     redirect_to studios_path
+    flash[:notice] = "投稿が削除されました"
   end
 
   private
