@@ -7,19 +7,41 @@ class StudiosController < ApplicationController
 
   def create
     studio = Studio.new(studio_params)
+    studio.user_id = current_user.id
     if studio.save
       redirect_to studio_path(studio)
       flash[:notice] = "投稿が保存されました"
     else
-      @studio = studio
       render 'new'
     end
+  end
+
+  def edit
+    @studio = Studio.find(params[:id])
+  end
+
+  def update
+    @studio = Studio.find(params[:id])
+    if @studio.update(studio_params)
+      redirect_to studio_path(@studio)
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    @studio = Studio.find(params[:id])
+    @studio.destroy
+    redirect_to studios_path
   end
 
   private
 
   def studio_params
-    params.require(:studio).permit(:user_id, :studio_image, :name, :address, :explanation, :url, { tag_ids: [] })
+    params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids:[])
   end
 
 end
+
+# { tag_ids: [] }
+# , tags_attributes:[tag_ids: []]

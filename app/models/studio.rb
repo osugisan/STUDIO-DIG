@@ -5,6 +5,8 @@ class Studio < ApplicationRecord
   has_many :tags, through: :studio_tags
   attachment :studio_image
 
+  accepts_nested_attributes_for :tags
+
   validates :name, presence: true
   validates :address, presence: true
 end
