@@ -19,7 +19,7 @@ class StudiosController < ApplicationController
   private
 
   def studio_params
-    params.require(:studio).permit(:user_id, :studio_image, :name, :address, :explanation, :url)
+    params.require(:studio).permit(:user_id, :studio_image, :name, :address, :explanation, :url, { tag_ids: [] })
   end
 
 end
