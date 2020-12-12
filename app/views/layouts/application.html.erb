@@ -11,16 +11,17 @@
   </head>
 
   <body>
-    <div class="full-page">
-
-    <%= render 'partial/navbar' %>
-
-    <%= render 'partial/flash' %>
-
-    <%= yield %>
-
+    <div id="wrapper">
+      <div class="full-page">
+  
+      <%= render 'partial/navbar' %>
+  
+      <%= render 'partial/flash' %>
+  
+      <%= yield %>
+  
+      </div>
+      <%= render 'partial/footer' %>
     </div>
-    <%= render 'partial/footer' %>
-
   </body>
 </html>

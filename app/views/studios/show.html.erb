@@ -1,1 +1,20 @@
 <%= render 'studios/info' %>
+
+<div class="container">
+  <div class="row studio-container">
+    <div class="col-lg-10 mx-auto">
+      <div class="row">
+        <div class="col-lg-6">
+          <%= attachment_image_tag @studio, :studio_image, fallback: "no_img.png", size:"400x300" %>
+        </div>
+        <div class="col-lg-6">
+          <h3><%= @studio.name%></h3>
+          <span><%= @studio.explanation%></span>
+            <% @studio.tags.each do |tag| %>
+                <%= link_to tag.name, "#", class: "btn btn-outline-info" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
