@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :studios do
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     resources :reviews, only: [:create, :destroy] do
       resource :likes, only: [:create, :destroy]
     end
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
       get :searches
     end
   end
-  
+
 end

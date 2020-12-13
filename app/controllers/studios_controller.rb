@@ -29,12 +29,16 @@ class StudiosController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @studio = Studio.find(params[:id])
     @studio.destroy
     redirect_to studios_path
     flash[:notice] = "投稿が削除されました"
+  end
+
+  def show
+    @studio = Studio.find(params[:id])
   end
 
   private
