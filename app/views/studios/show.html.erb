@@ -13,6 +13,9 @@
             <% @studio.tags.each do |tag| %>
                 <%= link_to tag.name, "#", class: "btn btn-outline-info" %>
             <% end %>
+            <div id="favorite-btn_<%= @studio.id %>">
+              <%= render 'favorites/favorite-btn', studio: @studio %>
+            </div>
         </div>
       </div>
     </div>
