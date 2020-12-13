@@ -5,11 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <div class="full-page">
+  
+      <%= render 'partial/navbar' %>
+  
+      <%= render 'partial/flash' %>
+  
+      <%= yield %>
+  
+      </div>
+      <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>

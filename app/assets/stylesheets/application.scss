@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #262626;
+}
+
+main {
+  flex: 1;
+}
+
+@import "bootstrap";
+
+@import "layouts/navbar";
+@import "layouts/footer";
+@import "users/devise";
