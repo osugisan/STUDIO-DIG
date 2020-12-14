@@ -1,5 +1,6 @@
 <%= render 'studios/info' %>
 
+<!--スタジオ詳細-->
 <div class="container">
   <div class="row studio-container">
     <div class="col-lg-10 mx-auto">
@@ -8,16 +9,135 @@
           <%= attachment_image_tag @studio, :studio_image, fallback: "no_img.png", size:"400x300" %>
         </div>
         <div class="col-lg-6">
-          <h3><%= @studio.name%></h3>
-          <span><%= @studio.explanation%></span>
+          <h3 class="shop-name"><%= @studio.name%></h3>
+
+            <!--星評価平均点-->
+            <div class="star-item">
+              <div id="star_ave_<%= @studio.id %>"></div>
+              <div class="star-point"><%= @studio.reviews.average(:rank).to_f.round(1) %></div>
+            </div>
+
+            <!--ブックマーク機能-->
+            <div class="fav-item">
+              <%= render 'favorites/favorite-btn', studio: @studio %>
+            </div>
+
+          <span class="shop-explanation"><%= @studio.explanation%></span>
+          <div class="shop-tag">
             <% @studio.tags.each do |tag| %>
                 <%= link_to tag.name, "#", class: "btn btn-outline-info" %>
             <% end %>
-            <div id="favorite-btn_<%= @studio.id %>">
-              <%= render 'favorites/favorite-btn', studio: @studio %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--スタジオ詳細-->
+
+  <div class="row review-container">
+    <div class="col-lg-10 mx-auto">
+      <div class="card border-light url-bar">
+       <h4>公式ＨＰへ</h4>
+       <% if @studio.url.blank? %>
+         <%= link_to "公式HPを登録する！", edit_studio_path(@studio) %>
+       <% else %>
+         <span>(<%= text_url_to_link(h(@studio.url)).html_safe %>)</span>
+       <% end %>
+      </div>
+    </div>
+
+    <!--口コミ表示部-->
+    <div class="col-lg-8 mx-auto">
+      <h4><i class="far fa-comments"></i>みんなの口コミ</h4>
+      <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span>
+      <% @studio.reviews.each do |review| %>
+      <div class="card border-light review-content">
+        <div class="d-flex flex-row review-name">
+          <%= review.user.profile_image %>
+          <h4><%= review.user.name %> さん</h4>
+        </div>
+        <div class="review-body">
+
+          <!--星評価表示-->
+          <div id="star-rank-<%= review.id %>">
+            <strong><%= review.rank %>　</strong>
+          </div><br>
+          <script>
+          $('#star-rank-<%= review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= review.rank %>,
+          });
+          </script>
+          <!--星評価表示-->
+
+          <h6>「<%= review.title %>」</br></h6>
+          <h7>　<%= review.body %></h7>
+        </div>
+        <div class="review-bottom">
+          <strong>投稿日：<%= l review.created_at %></strong>
+          <% if review.user == current_user %>
+            <%= link_to "削除", studio_review_path(review.studio, review), method: :delete %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-lg-8 mx-auto">
+      <div class="card border-light review-form">
+        <div class="col-lg-11 mx-auto">
+          <h4><i class="far fa-edit"></i> <%= @studio.name %>の口コミを投稿</h4>
+          <%= form_with(model: [@studio, @review], local: true) do |f| %>
+
+          <%= render 'partial/error_message', model: f.object %>
+
+          <div class="form-group row">
+            <div id="star" >
+              <%= f.label :rank, "評価　" %>
+              <%= f.hidden_field :rank, id: :review_star %>
             </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, class: "form-control", placeholder: "一言で言うと.." %>
+
+            <%= f.label :body, "コメント" %>
+            <%= f.text_area :body, class: "form-control", placeholder: "良かった点、悪かった点など具体的に！" %>
+
+            <div class="col-lg-4 mx-auto">
+              <%= f.submit "口コミを投稿", class: "form-control btn btn-success mt-3" %>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[rank]',
+  half: true,
+});
+
+$('#star_ave_<%= @studio.id %>').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  readOnly: true,
+  score: <%= @studio.reviews.average(:rank).to_f.round(1) %>,
+});
+</script>

@@ -29,7 +29,7 @@
 .info-card {
   padding: 10px 0;
   margin-top: 20px;
-
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
 
 .info-item {
@@ -46,4 +46,45 @@
 
 .my-box2 {
   margin-left: 20px;
+}
+
+.url-bar {
+  text-align: center;
+  margin: 20px 0;
+  background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+}
+
+.star-item {
+  display: flex;
+  justify-content: around;
+  margin: 10px 0;
+}
+
+.star-point {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.fav-item {
+  display: flex;
+  justify-content: around;
+  margin: 10px 0;
+}
+
+.fav-smallitem {
+  display: flex;
+  justify-content: around;
+  font-size: 30px;
+}
+
+.fav-string {
+  margin-left: 10px;
+}
+
+.fav-string span {
+  font-size: 15px;
+}
+
+.shop-tag {
+  margin-top: 20px;
 }

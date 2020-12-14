@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   has_many :studios, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
+  attachment :profile_image
 
   validates :name, presence: true, length: { maximum: 50 }
-
-
 end
