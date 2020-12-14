@@ -24,5 +24,4 @@ Rails.application.routes.draw do
       get :searches
     end
   end
-
 end

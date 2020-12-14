@@ -12,6 +12,7 @@ class StudiosController < ApplicationController
       redirect_to studio_path(studio)
       flash[:notice] = "投稿が保存されました"
     else
+      @studio = Studio.new
       render 'new'
     end
   end
@@ -39,14 +40,19 @@ class StudiosController < ApplicationController
 
   def show
     @studio = Studio.find(params[:id])
+    @review = Review.new
   end
+
+  def index
+    @studios = Studio.all
+  end
+
 
   private
 
   def studio_params
-    params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids:[])
+    params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids: [])
   end
-
 end
 
 # { tag_ids: [] }

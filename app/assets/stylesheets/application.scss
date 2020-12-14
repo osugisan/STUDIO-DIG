@@ -25,8 +25,6 @@ body {
 .full-page {
   width: 100vw;
   height: 100vh;
-
-  background-color: #fafafa;
   font-size: 14px;
   color: #262626;
 }
@@ -35,6 +33,13 @@ main {
   flex: 1;
 }
 
+.error-message {
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+}
 @import "bootstrap";
 
 @import "layouts/navbar";
