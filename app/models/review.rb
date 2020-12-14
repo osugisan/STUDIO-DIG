@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :studio
+  has_many :likes, dependent: :destroy
 
   validates :rank, presence: true
   validates :title, presence: true

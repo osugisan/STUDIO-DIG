@@ -83,6 +83,9 @@
           <% if review.user == current_user %>
             <%= link_to "削除", studio_review_path(review.studio, review), method: :delete %>
           <% end %>
+          <!--<div class="like-item">-->
+          <!--     render 'likes/like-btn', studio: @studio -->
+          <!--</div>-->
         </div>
       </div>
       <% end %>
@@ -117,6 +120,9 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-8 mx-auto">
+      <div id="map"></div>
+    </div>
   </div>
 </div>
 
@@ -140,4 +146,33 @@ $('#star_ave_<%= @studio.id %>').raty({
   readOnly: true,
   score: <%= @studio.reviews.average(:rank).to_f.round(1) %>,
 });
+
+// GoogleMap表示
+function initMap() {
+  // latitude,longitudeから位置を特定
+  var test ={lat: <%= studio.latitude %>, lng: <%= studio.longitude %>};
+  var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15, 
+            center: test
+            });
+  var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+  var contentString = '住所：<%= studio.address %>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  // Map上の指定した位置にピンを挿して表示する
+  var marker = new google.maps.Marker({
+                position:test,
+                map: map,
+                title: contentString
+               });
+
+   marker.addListener('click', function() {
+     infowindow.open(map, marker);
+   });
+}
+
 </script>
