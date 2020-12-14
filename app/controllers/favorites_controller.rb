@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-
   before_action :set_studio
   before_action :authenticate_user!
 
@@ -17,5 +16,4 @@ class FavoritesController < ApplicationController
   def set_studio
     @studio = Studio.find(params[:studio_id])
   end
-
 end
