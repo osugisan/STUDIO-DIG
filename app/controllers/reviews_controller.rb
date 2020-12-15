@@ -1,14 +1,14 @@
 class ReviewsController < ApplicationController
 
   def create
-    studio = Studio.find(params[:studio_id])
-    review = current_user.reviews.new(review_params)
-    review.studio_id = studio.id
-    if review.save
-      redirect_to studio_path(studio)
+    @studio = Studio.find(params[:studio_id])
+    @review = current_user.reviews.new(review_params)
+    @review.studio_id = @studio.id
+    if @review.save
+      redirect_to studio_path(@studio)
     else
-      @studio = studio
-      @review = Review.new
+      studio = @review.studio
+      @reviews = studio.reviews
       render 'studios/show'
     end
   end

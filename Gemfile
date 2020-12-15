@@ -71,6 +71,8 @@ gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'geocoder'
+gem 'i18n-js'
+gem 'rails-i18n'
 
 group :production do
   gem 'mysql2'

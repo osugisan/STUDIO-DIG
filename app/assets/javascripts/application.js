@@ -18,6 +18,9 @@
 //= require_tree .
 //= require jquery3
 //= require popper
+//= require i18n
+//= require i18n/translations
+
 
 /*!
  * Raty - A Star Rating Plugin

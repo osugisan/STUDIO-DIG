@@ -6,13 +6,12 @@ class StudiosController < ApplicationController
   end
 
   def create
-    studio = Studio.new(studio_params)
-    studio.user_id = current_user.id
-    if studio.save
-      redirect_to studio_path(studio)
+    @studio = Studio.new(studio_params)
+    @studio.user_id = current_user.id
+    if @studio.save
+      redirect_to studio_path(@studio)
       flash[:notice] = "投稿が保存されました"
     else
-      @studio = Studio.new
       render 'new'
     end
   end
@@ -40,6 +39,7 @@ class StudiosController < ApplicationController
 
   def show
     @studio = Studio.find(params[:id])
+    @reviews = @studio.reviews.order("id DESC")
     @review = Review.new
   end
 
