@@ -3,18 +3,18 @@
 </div>
 <div class="card new-card col-lg-6 mx-auto">
   <div class="form-wrap">
+    <%= form_with model: @studio, local: true do |f| %>
 
-    <div class="error-message">
-      <% if @studio.errors.any?%>
+    <% if @studio.errors.any?%>
+      <div class="error-message">
         <ul>
           <% @studio.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
-    <%= form_with model: @studio, local: true do |f| %>
       <div class="form-group row">
         <div class="col-lg-5">
           <%= f.label :"スタジオ写真" %>

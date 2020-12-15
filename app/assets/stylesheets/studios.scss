@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.shop-image {
+  filter:drop-shadow(1px 2px 3px #888888);
+}
+
 .new-card {
   margin-top: 50px;
 }
@@ -12,10 +16,6 @@
 
 .form-wrap {
   padding: 20px 10px;
-}
-
-.error-message {
-  color: red;
 }
 
 .action-1 {
@@ -50,8 +50,8 @@
 
 .url-bar {
   text-align: center;
-  margin: 20px 0;
-  background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+  margin: 40px 0;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
 
 .star-item {
