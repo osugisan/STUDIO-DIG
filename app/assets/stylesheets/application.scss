@@ -45,8 +45,13 @@
   padding:12px; font-weight:850;
 }
 
+.pagination {
+  justify-content: center;
+}
+
 @import "bootstrap";
 
 @import "layouts/navbar";
 @import "layouts/footer";
 @import "users/devise";
+@import "studios/index";
