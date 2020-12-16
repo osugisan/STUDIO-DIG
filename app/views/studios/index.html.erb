@@ -1,57 +1,71 @@
-<h2>gmap</h2>
+<%= render 'studios/info' %>
 
-<!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="Sydney, NSW">
 
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="Encode" onclick="codeAddress()">
-<div id='map'>
+<div class="row studios-container">
+  <div class="col-lg-12">
+    <div class="card mx-auto studios-logo">
+      <span>みんなのスタジオ</span>
+    </div>
+    <div class="index-line"></div>
+
+    <div class="row row-height">
+
+      <!--スタジオ一覧アイテム-->
+      <% @studios.each do |studio| %>
+      <div class="col-lg-4 row-eq-height">
+        <div class="card studio-items">
+          <%= attachment_image_tag studio, :studio_image, fallback: "no_img.png", size:"270x170", class: "card-img-top", style: "border-bottom: 1px solid rgba(0, 0, 0, .0975);"%>
+          <div class="card-body">
+            <div class="card-title">
+              <%= link_to studio_path(studio) do%>
+              <%= studio.name %>
+              <% end %>
+            </div>
+
+            <div class="card-text">
+              <%= studio.address %>
+            </div>
+
+            <div class="card-text">
+              <!--星評価平均点-->
+              <div class="star-item">
+                <div id="star_ave_<%= studio.id %>"></div>
+                <div class="star-point"><%= studio.reviews.average(:rank).to_f.round(1) %></div>
+              </div>
+              <script>
+              $('#star_ave_<%= studio.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= studio.reviews.average(:rank).to_f.round(1) %>,
+              });
+              </script>
+              <!--星評価-->
+            </div>
+
+            <div clas="card-text">
+              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= studio.favorites.count %>
+
+              <span>　<i class="fas fa-user-friends"></i><%= studio.reviews.count %>件</span>
+            </div>
+
+            <div class="card-text">
+            <% studio.tags.each do |tag| %>
+              <%= link_to tag.name, "#", class: "btn btn-success btn-sm" %>
+            <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <!--スタジオ一覧アイテム-->
+
+    </div>
+  </div>
 </div>
-
-<style>
-#map{
-  height: 400px;
-}
-</style>
-
-<script>
-/*
-mapを関数の外で定義(codeAddressでも使うため)
-geocoderを用意
-*/
-
-let map
-let geocoder
-
-function initMap(){
-  // geocoderを初期化
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: -34.397, lng: 150.644},
-  zoom: 8
-  });
-}
-
-function codeAddress(){
-  // 入力を取得
-  let inputAddress = document.getElementById('address').value;
-
-  // geocodingしたあとmapを移動
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-　　　　　　　　　　　　// map.setCenterで地図が移動
-      map.setCenter(results[0].geometry.location);
-
-　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API'] %>&callback=initMap" async defer></script>
+<%= paginate @studios %>

@@ -44,7 +44,8 @@ class StudiosController < ApplicationController
   end
 
   def index
-    @studios = Studio.all
+    @studios = Studio.page(params[:page]).per(9).order('created_at')
+
   end
 
 

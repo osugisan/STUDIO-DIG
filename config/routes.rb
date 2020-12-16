@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       get :ranks
       get :searches
+      get :tags
     end
   end
 end
