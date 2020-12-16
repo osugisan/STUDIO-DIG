@@ -1,0 +1,23 @@
+.search-image {
+  background-image:url(search.jpeg);
+  background-repeat:  no-repeat;
+  width:auto;
+  height:250pX;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-logo {
+}
+
+input.font-awesome {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+.studios-logo p {
+  margin: 15px 0;
+}

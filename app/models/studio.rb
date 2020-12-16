@@ -18,4 +18,14 @@ class Studio < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  def Studio.search(search)
+    if search.blank?
+      Studio.all
+    else
+    Studio.where([
+      'name LIKE ? OR address LIKE ?',
+      "%#{search}%", "%#{search}%"])
+    end
+  end
 end

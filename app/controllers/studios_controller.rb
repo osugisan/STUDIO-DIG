@@ -44,10 +44,24 @@ class StudiosController < ApplicationController
   end
 
   def index
-    @studios = Studio.page(params[:page]).per(9).order('created_at')
-
+    @studios = Studio.page(params[:page]).per(9)
   end
 
+  def top
+    @studios = Studio.all
+    @tags = Tag.all
+  end
+
+  def searches
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @studios = Studio.where(id: StudioTag.where(tag_id: params[:tag_id]).select(:studio_id)).page(params[:page]).per(9).order(creted_at: :desc)
+    else
+      @studios = Studio.search(params[:search]).page(params[:page]).per(9).order(creted_at: :desc)
+    end
+    # select * from studios where address like '%大宮%'
+    # Studio.where("address like '%大宮%'")
+  end
 
   private
 
@@ -55,6 +69,3 @@ class StudiosController < ApplicationController
     params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids: [])
   end
 end
-
-# { tag_ids: [] }
-# , tags_attributes:[tag_ids: []]
