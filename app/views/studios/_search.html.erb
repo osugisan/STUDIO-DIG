@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="d-flex flex-column search-image">
+        <h4 class="search-logo">さあ、スタジオをディグろう</h4>
+        <%= form_with url: searches_studios_url, method: :get, local: true do |f| %>
+        <div class="form-group col-lg-12 mx-auto">
+          <%= f.text_field :search, placeholder: "スタジオ名,場所,etc...", class: "form-control input"%>
+          <%= f.submit "検索", class: "form-control btn btn-outline-secondary mx-auto" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

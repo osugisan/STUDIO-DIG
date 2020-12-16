@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row studios-container">
+    <div class="col-lg-12">
+      <div class="card mx-auto studios-logo">
+        <span>検索結果</span>
+        <p>「<%= params[:search] %>」</p>
+      </div>
+      <div class="index-line"></div>
+
+<%= render 'studios/index_items', studios: @studios %>
+
+</div>
