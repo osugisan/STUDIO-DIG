@@ -1,0 +1,14 @@
+<%= render 'studios/info' %>
+
+<div class="container">
+  <div classs="row">
+    <div class="col-lg-4 mx-auto">
+      <h4 class="user-item">PROFILE</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, class: "profile_image", fallback: "no_user.jpg" %>
+    </div>
+  </div>
+</div>

@@ -8,18 +8,28 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <!-- drawer.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+    <!-- iScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <!-- drawer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+
   </head>
 
-  <body>
-    <div class="container">
+  <body class="drawer drawer--right">
 
-      <%= render 'partial/navbar' %>
+  <%= render 'partial/navbar' %>
+  
+  <div class="container">
+    <%= render 'partial/flash' %>
 
-      <%= render 'partial/flash' %>
+    <%= yield %>
+  </div>
+  
+  <%= render 'partial/footer' %>
 
-      <%= yield %>
-
-      <%= render 'partial/footer' %>
-    </div>
   </body>
 </html>

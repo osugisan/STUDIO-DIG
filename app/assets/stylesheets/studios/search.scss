@@ -1,17 +1,24 @@
 .search-image {
-  background-image:url(search.jpeg);
+  background-image:url(search2.jpg);
   background-repeat:  no-repeat;
   width:auto;
-  height:250pX;
+  height:350pX;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .search-logo {
+  color: white;
+  margin-bottom: 20px;
 }
 
-input.font-awesome {
+.input {
+  margin-right: 20px;
+}
+
+.input.font-awesome {
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
@@ -20,4 +27,20 @@ input.font-awesome {
 
 .studios-logo p {
   margin: 15px 0;
+}
+
+.area-search {
+  margin-top: 10px;
+}
+
+.area {
+  padding: 0 5px;
+}
+
+.area-logo {
+  margin: 10px 0;
+}
+
+.tag-logo {
+  margin: 10px 0;
 }

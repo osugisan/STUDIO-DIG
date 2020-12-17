@@ -1,7 +1,19 @@
+<%= render 'studios/info' %>
+
+<div class="row studios-container">
+  <div class="col-lg-12">
+    <div class="card mx-auto studios-logo">
+      <span>スタジオランキング</span>
+    </div>
+    <div class="index-line"></div>
+
     <!--スタジオ一覧アイテム-->
     <div class="row row-height">
-      <% studios.each do |studio| %>
+      <% @ranks.each.with_index(1) do |studio, i| %>
       <div class="col-lg-4 row-eq-height">
+        <div class="rank-int mx-auto">
+          <h4>第<%= i %>位</h4>
+        </div>
         <div class="card studio-items">
           <%= attachment_image_tag studio, :studio_image, fallback: "no_img.png", size:"270x170", class: "card-img-top", style: "border-bottom: 1px solid rgba(0, 0, 0, .0975);"%>
           <div class="card-body">
@@ -53,8 +65,6 @@
       </div>
       <% end %>
     </div>
-      <!--スタジオ一覧アイテム-->
-
+    <!--スタジオ一覧アイテム-->
   </div>
 </div>
-<%= paginate studios %>
