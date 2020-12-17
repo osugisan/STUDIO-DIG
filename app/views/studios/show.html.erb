@@ -25,7 +25,7 @@
           <span class="shop-explanation"><%= @studio.explanation%></span>
           <div class="shop-tag">
             <% @studio.tags.each do |tag| %>
-                <%= link_to tag.name, "#", class: "btn btn-outline-info" %>
+                <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-outline-info" %>
             <% end %>
           </div>
         </div>

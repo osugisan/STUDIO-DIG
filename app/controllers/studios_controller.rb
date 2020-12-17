@@ -44,11 +44,12 @@ class StudiosController < ApplicationController
   end
 
   def index
-    @studios = Studio.page(params[:page]).per(9)
+    @studios = Studio.page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def top
-    @studios = Studio.all
+    @studios = Studio.order(created_at: :desc).limit(4)
+    @reviews = Review.order(created_at: :desc).limit(4)
     @tags = Tag.all
   end
 
@@ -61,6 +62,10 @@ class StudiosController < ApplicationController
     end
     # select * from studios where address like '%大宮%'
     # Studio.where("address like '%大宮%'")
+  end
+
+  def ranks
+    @ranks = Studio.find(Favorite.group(:studio_id).order('count(studio_id) desc').limit(9).pluck(:studio_id))
   end
 
   private
