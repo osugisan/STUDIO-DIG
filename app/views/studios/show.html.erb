@@ -53,7 +53,7 @@
       <% @reviews.each do |review| %>
       <div class="card border-light review-content">
         <div class="d-flex flex-row review-name">
-          <%= review.user.profile_image %>
+          <%= attachment_image_tag review.user, :profile_image, size:"60x60", class: "profile_image", fallback: "no_user.jpg" %>
           <h4><%= review.user.name %> さん</h4>
         </div>
         <div class="review-body">
@@ -124,7 +124,10 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-8 mx-auto">
+    <div class="col-lg-9 mx-auto map-logo">
+      <h4><i class="fas fa-map-marker-alt"></i> <%= @studio.name %>の地図</h4>
+    </div>
+    <div class="col-lg-9 mx-auto">
       <div id="map"></div>
     </div>
   </div>
@@ -132,33 +135,29 @@
 
 
 <script>
-// GoogleMap表示
-function initMap() {
-  // latitude,longitudeから位置を特定
-  var test ={lat: <%= @studio.latitude %>, lng: <%= @studio.longitude %>};
-  var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-            });
-  var transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
+  let map;
 
-  var contentString = '住所：<%= @studio.address %>';
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
 
-  // Map上の指定した位置にピンを挿して表示する
-  var marker = new google.maps.Marker({
-                position:test,
-                map: map,
-                title: contentString
-              });
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.studio.latitude,
+        lng: gon.studio.longitude
+      },
+      zoom: 12,
+    });
 
-   marker.addListener('click', function() {
-     infowindow.open(map, marker);
-   });
-}
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.studio.latitude,
+        lng: gon.studio.longitude
+      },
+      map: map
+    });
+  }
 </script>
 
 <script async defer

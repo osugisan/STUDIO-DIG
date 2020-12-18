@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-light ">
+  <nav class="navbar navbar-light fixed-top">
         <nav>
         <ul class="nav nav-navbar">
           <li class="nav-item active">
@@ -7,19 +7,19 @@
              <i class="fas fa-plus-square nav-link"></i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item active">
             <%= link_to  user_path(current_user) do %>
               <i class="fas fa-user nav-link"></i>
             <% end %>
 
           </li>
-        </ul>
-        </nav>
-        <div class="nav-brand　navbar-brand-center">
+        <li class="col-lg-4 offset-lg-4 brand-center">
           <%= link_to root_path do %>
            <img src="/assets/logo.jpg", class="header-logo" >
           <% end %>
-        </div>
+        </li>
+        </ul>
+        </nav>
 
     <button type="button" class="drawer-toggle drawer-hamburger">
       <span class="sr-only">toggle navigation</span>
@@ -27,10 +27,17 @@
     </button>
     <nav class="drawer-nav" role="navigation">
       <ul class="drawer-menu">
+        <li>
+          <%= form_with url: searches_studios_url, method: :get, local: true do |f| %>
+            <div class="input-group">
+              <%= f.text_field :search, placeholder: "スタジオ名,場所,etc...", class: "form-control input"%>
+              <%= f.submit "検索", class: "input-group-append" %>
+            </div>
+          <% end %>
+        </li>
         <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
         <li><%= link_to 'マイページ', user_path(current_user), class: 'drawer-menu-item'%></li>
-        <li><%= link_to 'お気に入り', studios_user_path(current_user), class: 'drawer-menu-item'%></li>
-        <li></li>
+        <li><%= link_to 'お気に入り', favorites_user_path(current_user), class: 'drawer-menu-item'%></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'drawer-menu-item'%></li>
       </ul>
     </nav>

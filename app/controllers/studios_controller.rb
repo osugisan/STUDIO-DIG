@@ -41,6 +41,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     @reviews = @studio.reviews.order("id DESC")
     @review = Review.new
+    gon.studio = @studio
   end
 
   def index

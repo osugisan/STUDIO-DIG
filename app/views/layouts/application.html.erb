@@ -5,9 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <!-- drawer.css -->
@@ -22,13 +23,13 @@
   <body class="drawer drawer--right">
 
   <%= render 'partial/navbar' %>
-  
-  <div class="container">
+
+  <div class="container main-content">
     <%= render 'partial/flash' %>
 
     <%= yield %>
   </div>
-  
+
   <%= render 'partial/footer' %>
 
   </body>
