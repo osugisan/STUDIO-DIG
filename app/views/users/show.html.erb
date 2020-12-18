@@ -1,0 +1,56 @@
+<%= render 'studios/info' %>
+
+<div class="container">
+  <div classs="row user-wrap">
+    <div class="col-lg-2 mx-auto text-center user-item">
+      <h4>PROFILE</h4>
+    </div>
+  </div>
+  <div class="row user-wrap">
+    <div class="col-lg-2 mx-auto text-center">
+      <%= attachment_image_tag @user, :profile_image, size:"100x100", class: "profile_image", fallback: "no_user.jpg" %>
+    </div>
+  </div>
+  <% if @user == current_user %>
+  <div classs="row user-wrap">
+    <div class="col-lg-3 mx-auto text-center user-btn">
+      <%= link_to "PROFILE EDIT", edit_user_path(current_user), class: "btn btn-outline-success" %>
+    </div>
+  </div>
+  <% end %>
+  <% if @user == current_user %>
+  <div classs="row user-wrap">
+    <div class="col-lg-3 mx-auto text-center user-btn">
+      <%= link_to "お気に入りのスタジオ", favorites_user_path(current_user), class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h4 class="top-studio-logo">投稿したレビュー</h4>
+  </div>
+</div>
+
+<%= render 'studios/top_reviews', reviews: @reviews %>
+
+<div class="row">
+  <div class="col-lg-12 text-right more-string">
+    <%= link_to "もっと見る...", reviews_user_path(@user) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h4 class="top-studio-logo">投稿したスタジオ</h4>
+  </div>
+</div>
+
+<%= render 'studios/top_studios', studios: @studios %>
+
+<div class="row">
+  <div class="col-lg-12 text-right more-string">
+    <%= link_to "もっと見る...", studios_user_path(@user) %>
+  </div>
+</div>

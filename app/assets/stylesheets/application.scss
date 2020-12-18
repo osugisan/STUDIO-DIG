@@ -14,6 +14,21 @@
  *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@font-face{
+ font-family: 'k-font';
+ src: font-url('keifont.woff') format('woff'),
+      font-url('keifont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }
+
+
+
+.main-content {
+  padding-top: 60px;
+  font-family: Times, 'k-font';
+  color: #868686;
+}
 
 .error-message {
   color:red;

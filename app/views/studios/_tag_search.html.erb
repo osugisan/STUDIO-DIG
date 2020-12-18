@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 offset-lg-1">
     <h4 class="area-logo"><i class="fas fa-fire-alt"></i>人気エリアから探す</h4>
   </div>
 </div>
@@ -16,12 +16,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 offset-lg-1">
     <h4 class="tag-logo"><i class="fas fa-tags"></i>タグから探す</h4>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 offset-lg-1">
     <% @tags.each do |tag| %>
       <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm" %>
     <% end %>
