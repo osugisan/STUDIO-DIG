@@ -2,6 +2,8 @@
   <nav class="navbar navbar-light fixed-top">
         <nav>
         <ul class="nav nav-navbar">
+
+        <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to new_studio_path do %>
              <i class="fas fa-plus-square nav-link"></i>
@@ -11,8 +13,20 @@
             <%= link_to  user_path(current_user) do %>
               <i class="fas fa-user nav-link"></i>
             <% end %>
-
           </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to new_user_registration_path do %>
+             <i class="fas fa-user-plus nav-link"></i>
+            <% end %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to  new_user_session_path do %>
+              <i class="fas fa-sign-in-alt nav-link"></i>
+            <% end %>
+          </li>
+        <% end %>
+
         <li class="col-lg-4 offset-lg-4 brand-center">
           <%= link_to root_path do %>
            <img src="/assets/logo.jpg", class="header-logo" >
@@ -35,10 +49,18 @@
             </div>
           <% end %>
         </li>
-        <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
-        <li><%= link_to 'マイページ', user_path(current_user), class: 'drawer-menu-item'%></li>
-        <li><%= link_to 'お気に入り', favorites_user_path(current_user), class: 'drawer-menu-item'%></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'drawer-menu-item'%></li>
+
+        <% if user_signed_in? %>
+          <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
+          <li><%= link_to 'マイページ', user_path(current_user), class: 'drawer-menu-item'%></li>
+          <li><%= link_to 'お気に入り', favorites_user_path(current_user), class: 'drawer-menu-item'%></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'drawer-menu-item'%></li>
+        <% else %>
+          <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: 'drawer-menu-item'%></li>
+          <li><%= link_to 'サインイン', new_user_session_path, class: 'drawer-menu-item'%></li>
+        <% end %>
+
       </ul>
     </nav>
   </nav>
