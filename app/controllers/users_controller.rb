@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @studios = Studio.where(user_id: @user).order(created_at: :desc).limit(4)
-    @reviews = @user.reviews.order(created_at: :desc).limit(4)
+    @studios = Studio.where(user_id: @user).order(created_at: :desc).limit(10)
+    @reviews = @user.reviews.order(created_at: :desc).limit(10)
   end
 
   def edit

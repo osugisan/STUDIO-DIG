@@ -33,6 +33,20 @@
  *
  */
 
+
+// フラッシュイン
+$(function() {
+  $('body').fadeIn(400);
+});
+
+// アラートメッセージscript
+$(function () {
+    $(document).ready(function() {
+        $("#notifyMessage").stop().fadeIn(1200).delay(1500).fadeOut("slow");
+    });
+});
+
+// 星評価script
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
@@ -792,3 +806,4 @@
     return Raty;
   })();
 }));
+// 星評価script

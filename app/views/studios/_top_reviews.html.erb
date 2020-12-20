@@ -1,6 +1,7 @@
-<div class="row">
+<div class="swiper-container">
+<div class="swiper-wrapper">
 <% reviews.each do |review| %>
-  <div class="col-lg-3">
+    <div class="swiper-slide">
     <div class="card studio-items">
       <div class="card-body">
 
@@ -44,6 +45,35 @@
 
       </div>
     </div>
-  </div>
+    </div>
 <% end %>
 </div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+<script>
+$( function() {
+    var swiper = new Swiper('.swiper-container', {
+      	spaceBetween: 10,
+	      slidesPerView: 4,
+      	mousewheel: {
+      		forceToAxis: false,
+      		invert: false
+      	},
+      	keyboard: true,
+      	navigation: {
+      		nextEl: '.swiper-button-next',
+      		prevEl: '.swiper-button-prev'
+      	},
+        autoplay: {
+      		delay: 3000,
+      		stopOnLastSlide: false,
+      		disableOnInteraction: false,
+      		reverseDirection: false
+      	},
+    } );
+} );
+</script>
