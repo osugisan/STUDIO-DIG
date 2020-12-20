@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
   root 'studios#top'
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get :ranks
       get :searches
+      get :maps
     end
   end
 end

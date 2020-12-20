@@ -1,4 +1,6 @@
-<%= render 'studios/info' %>
+<% if user_signed_in? %>
+  <%= render 'studios/info' %>
+<% end %>
 
 <!--スタジオ詳細-->
 <div class="container">
@@ -18,9 +20,11 @@
             </div>
 
             <!--ブックマーク機能-->
-            <div class="fav-item">
-              <%= render 'favorites/favorite-btn', studio: @studio %>
-            </div>
+            <% if user_signed_in? %>
+              <div class="fav-item">
+                <%= render 'favorites/favorite-btn', studio: @studio %>
+              </div>
+            <% end %>
 
           <span class="shop-explanation"><%= @studio.explanation%></span>
           <div class="shop-tag">
@@ -86,9 +90,11 @@
             <% end %>
           </div>
 
-          <div class="like-item col-lg-4">
-            <%= render 'likes/like-btn', review: review %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="like-item col-lg-4">
+              <%= render 'likes/like-btn', review: review %>
+            </div>
+          <% end %>
 
         </div>
       </div>
@@ -146,7 +152,7 @@
         lat: gon.studio.latitude,
         lng: gon.studio.longitude
       },
-      zoom: 12,
+      zoom: 17,
     });
 
     marker = new google.maps.Marker({

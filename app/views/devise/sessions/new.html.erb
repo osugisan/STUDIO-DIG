@@ -2,18 +2,18 @@
   <div class="card devise-card col-lg-6 mx-auto">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h2 class="sign-logo">STUDIO DIG</h2>
+        <h2 class="sign-logo"><img src="/assets/logo.jpg", class="sign-image" ></h2>
       </div>
 
+      <% if @user.errors.any?%>
       <div class="error-message">
-        <% if @user.errors.any?%>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
+      <% end %>
 
       <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
         <%= devise_error_messages! %>
