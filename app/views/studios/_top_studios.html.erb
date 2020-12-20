@@ -1,7 +1,7 @@
-<!--スタジオ一覧アイテム-->
-<div class="row">
+<div class="swiper-container">
+<div class="swiper-wrapper">
 <% studios.each do |studio| %>
-  <div class="col-lg-3">
+    <div class="swiper-slide">
     <div class="card studio-items h-100">
       <%= attachment_image_tag studio, :studio_image, fallback: "no_img.png", size:"270x170", class: "card-img-top", style: "border-bottom: 1px solid rgba(0, 0, 0, .0975);"%>
       <div class="card-body">
@@ -50,7 +50,9 @@
 
       </div>
     </div>
-  </div>
+    </div>
 <% end %>
 </div>
-<!--スタジオ一覧アイテム-->
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+</div>

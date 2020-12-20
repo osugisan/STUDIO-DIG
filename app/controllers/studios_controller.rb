@@ -49,8 +49,8 @@ class StudiosController < ApplicationController
   end
 
   def top
-    @studios = Studio.order(created_at: :desc).limit(4)
-    @reviews = Review.order(created_at: :desc).limit(4)
+    @studios = Studio.order(created_at: :desc).limit(10)
+    @reviews = Review.order(created_at: :desc).limit(10)
     @tags = Tag.all
   end
 
