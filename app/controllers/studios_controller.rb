@@ -57,9 +57,9 @@ class StudiosController < ApplicationController
   def searches
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      @studios = Studio.where(id: StudioTag.where(tag_id: params[:tag_id]).select(:studio_id)).page(params[:page]).per(9).order(creted_at: :desc)
+      @studios = Studio.where(id: StudioTag.where(tag_id: params[:tag_id]).select(:studio_id)).page(params[:page]).per(9).order(created_at: :desc)
     else
-      @studios = Studio.search(params[:search]).page(params[:page]).per(9).order(creted_at: :desc)
+      @studios = Studio.search(params[:search]).page(params[:page]).per(9).order(created_at: :desc)
     end
     # select * from studios where address like '%大宮%'
     # Studio.where("address like '%大宮%'")
