@@ -1,7 +1,7 @@
     <!--スタジオ一覧アイテム-->
     <div class="row row-height">
       <% studios.each do |studio| %>
-      <div class="col-lg-4 row-eq-height">
+      <div class="col-lg-4 col-sm-6 row-eq-height">
         <div class="card studio-items">
           <%= attachment_image_tag studio, :studio_image, fallback: "no_img.png", size:"270x170", class: "card-img-top", style: "border-bottom: 1px solid rgba(0, 0, 0, .0975);"%>
           <div class="card-body">
