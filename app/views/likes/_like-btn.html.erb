@@ -1,4 +1,4 @@
-<div id="like-btn_<%= review.id %>">
+<div>
   <% if review.liked_by?(current_user) %>
     <div class="like-smallitem">
       <%= link_to studio_review_likes_path(@studio, id: review.id, review_id: review.id), method: :DELETE, remote: true do %>
@@ -21,3 +21,4 @@
     </div>
   <% end %>
 </div>
+

@@ -69,6 +69,10 @@ class StudiosController < ApplicationController
     @ranks = Studio.find(Favorite.group(:studio_id).order('count(studio_id) desc').limit(9).pluck(:studio_id))
   end
 
+  def maps
+    gon.studios = Studio.all
+  end
+
   private
 
   def studio_params
