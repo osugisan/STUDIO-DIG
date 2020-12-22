@@ -2,8 +2,8 @@
 
 <div class="container">
   <div classs="row user-wrap">
-    <div class="col-lg-2 mx-auto text-center user-item">
-      <h4>PROFILE</h4>
+    <div class="col-lg-4 mx-auto text-center user-item">
+      <h4>P　R　O　F　I　L　E</h4>
     </div>
   </div>
   <div class="row user-wrap">
@@ -11,17 +11,27 @@
       <%= attachment_image_tag @user, :profile_image, size:"100x100", class: "profile_image", fallback: "no_user.jpg" %>
     </div>
   </div>
+  <div class="row user-wrap">
+    <div class="col-lg-4 mx-auto text-center user-introduction">
+      <%= @user.name %> さん
+    </div>
+  </div>
+  <div class="row user-wrap">
+    <div class="col-lg-4 mx-auto text-center user-introduction">
+      <%= @user.introduction %>
+    </div>
+  </div>
   <% if @user == current_user %>
   <div classs="row user-wrap">
-    <div class="col-lg-3 mx-auto text-center user-btn">
-      <%= link_to "PROFILE EDIT", edit_user_path(current_user), class: "btn btn-outline-success" %>
+    <div class="col-lg-4 mx-auto text-center user-btn">
+      <%= link_to "P R O F I L E　E D I T", edit_user_path(current_user), class: "btn btn-outline-success" %>
     </div>
   </div>
   <% end %>
   <% if @user == current_user %>
   <div classs="row user-wrap">
     <div class="col-lg-3 mx-auto text-center user-btn">
-      <%= link_to "お気に入りのスタジオ", favorites_user_path(current_user), class: "btn btn-outline-danger" %>
+      <%= link_to "お 気 に 入 り の ス タ ジ オ", favorites_user_path(current_user), class: "btn btn-outline-danger" %>
     </div>
   </div>
   <% end %>

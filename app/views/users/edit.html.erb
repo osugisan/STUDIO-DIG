@@ -23,16 +23,20 @@
             <%= f.label :profile_image, "サムネイル" %>
           </div>
           <div class="text-center">
-            <%= f.attachment_field :profile_image, placeholder: "サムネイル画像", class: "user-edit-form" %>
+            <%= f.attachment_field :profile_image, class: "user-edit-form" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control" %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control" %>
         </div>
 
         <div class="actions">

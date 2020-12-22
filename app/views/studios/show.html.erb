@@ -29,8 +29,12 @@
           <span class="shop-explanation"><%= @studio.explanation%></span>
           <div class="shop-tag">
             <% @studio.tags.each do |tag| %>
-                <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-outline-info" %>
+                <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success" %>
             <% end %>
+          </div>
+          <div class="pull-right">
+            <%= link_to "編集", edit_studio_path(@studio) %> |
+             <%= link_to "削除", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' } %>
           </div>
         </div>
       </div>
@@ -57,8 +61,8 @@
       <% @reviews.each do |review| %>
       <div class="card border-light review-content">
         <div class="d-flex flex-row review-name">
-          <%= attachment_image_tag review.user, :profile_image, size:"60x60", class: "profile_image", fallback: "no_user.jpg" %>
-          <h4><%= review.user.name %> さん</h4>
+          <%= attachment_image_tag review.user, :profile_image, size:"35x35", class: "profile_image", fallback: "no_user.jpg" %>
+          <h4 class="reviewer-name"><%= review.user.name %> さん</h4>
         </div>
         <div class="review-body">
 

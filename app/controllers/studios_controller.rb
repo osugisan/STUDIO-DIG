@@ -70,6 +70,7 @@ class StudiosController < ApplicationController
   end
 
   def maps
+    gon.studios = Studio.all
   end
 
   private
