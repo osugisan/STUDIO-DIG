@@ -20,21 +20,18 @@
 
   </head>
 
-  <div class="footerFixed">
-
   <body class="drawer drawer--right">
+    <div class="footerFixed">
+      <div class="container-fluid">
+        <div class="main-content">
+        <%= render 'partial/navbar' %>
+        <%= render 'partial/flash' %>
 
-  <%= render 'partial/navbar' %>
+        <%= yield %>
 
-  <div class="container main-content">
-    <%= render 'partial/flash' %>
-
-    <%= yield %>
-  </div>
-
-  <%= render 'partial/footer' %>
-
-  </div>
-
+        </div>
+      </div>
+      <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>
