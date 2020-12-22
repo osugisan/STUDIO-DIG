@@ -60,9 +60,11 @@
       <div class="action-1">
         <%= f.submit "更新する", class: "btn btn-primary w-100" %>
       </div>
-      <div class="actions">
-        <%= link_to "削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger w-100" %>
-      </div>
+      <% if user_signed_in? && @studio.user == current_user %>
+        <div class="actions">
+          <%= link_to "削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger w-100" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -38,7 +38,6 @@ class StudiosController < ApplicationController
   end
 
   def show
-    @user = current_user
     @studio = Studio.find(params[:id])
     @reviews = @studio.reviews.order("id DESC")
     @review = Review.new
