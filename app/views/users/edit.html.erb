@@ -23,20 +23,34 @@
             <%= f.label :profile_image, "サムネイル" %>
           </div>
           <div class="text-center">
-            <%= f.attachment_field :profile_image, class: "user-edit-form" %>
+            <% unless @user.email == "test@example.com" %>
+              <%= f.attachment_field :profile_image, class: "user-edit-form" %>
+            <% end %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :name, class: "form-control" %>
+          <% unless @user.email == "test@example.com" %>
+            <%= f.text_field :name, class: "form-control" %>
+          <% else %>
+            <%= f.text_field :name, class: "form-control", :readonly => true %>
+          <% end %>
         </div>
 
         <div class="form-group">
-          <%= f.email_field :email, class: "form-control" %>
+          <% unless @user.email == "test@example.com" %>
+            <%= f.email_field :email, class: "form-control" %>
+          <% else %>
+            <%= f.email_field :email, class: "form-control", :readonly => true %>
+          <% end %>
         </div>
 
         <div class="form-group">
-          <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control" %>
+          <% unless @user.email == "test@example.com" %>
+            <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control" %>
+          <% else %>
+            <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control", :readonly => true %>
+          <% end %>
         </div>
 
         <div class="actions">
