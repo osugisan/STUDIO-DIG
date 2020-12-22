@@ -34,7 +34,7 @@
           </div>
           <div class="edit-btn">
             <%= link_to "スタジオ情報を編集する", edit_studio_path(@studio), class: "btn btn-info btn-sm" %>
-            <% if user_signed_in? && @user == current_user %>
+            <% if user_signed_in? && @studio.user_id == current_user %>
               <%= link_to "スタジオを削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger btn-sm" %>
             <% end %>
           </div>
