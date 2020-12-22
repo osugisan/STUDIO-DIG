@@ -1,0 +1,67 @@
+// Place all the styles related to the reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.review-form {
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+
+.review-content {
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  padding: 15px 15px 0 15px;
+  margin: 10px 0;
+}
+
+.review-body {
+  display: inline-block;
+  position: relative;
+  margin: 20px 10px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 30px;
+  color: #000;
+}
+.review-body::after{
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: -30px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-top: 50px solid #fff;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  transform: rotate(130deg);
+}
+
+.review-bottom {
+  display: flex;
+}
+
+.like-item {
+  display: flex;
+  justify-content: around;
+  margin: 10px 0;
+}
+
+.like-smallitem {
+  display: flex;
+  justify-content: around;
+  font-size: 30px;
+}
+
+.like-string {
+  margin-left: 10px;
+}
+
+.like-string span {
+  font-size: 15px;
+}
+
+.review-form {
+  padding-top: 10px;
+}
+
+#star {
+  margin-top: 10px;
+}

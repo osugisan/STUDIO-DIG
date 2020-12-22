@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.shop-image {
+  filter:drop-shadow(1px 2px 3px #888888);
+}
+
 .new-card {
-  margin-top: 50px;
+  margin: 30px 0;
 }
 
 .studio-new-logo {
@@ -12,10 +16,6 @@
 
 .form-wrap {
   padding: 20px 10px;
-}
-
-.error-message {
-  color: red;
 }
 
 .action-1 {
@@ -29,7 +29,7 @@
 .info-card {
   padding: 10px 0;
   margin-top: 20px;
-
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
 
 .info-item {
@@ -46,4 +46,58 @@
 
 .my-box2 {
   margin-left: 20px;
+}
+
+.url-bar {
+  text-align: center;
+  margin: 40px 0;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
+.star-item {
+  display: flex;
+  justify-content: around;
+  margin: 10px 0;
+}
+
+.star-point {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.fav-item {
+  display: flex;
+  justify-content: around;
+  margin: 10px 0;
+}
+
+.fav-smallitem {
+  display: flex;
+  justify-content: around;
+  font-size: 30px;
+}
+
+.fav-string {
+  margin-left: 10px;
+}
+
+.fav-string span {
+  font-size: 15px;
+}
+
+.shop-tag {
+  margin-top: 20px;
+}
+
+.map-logo {
+  margin: 20px 0;
+}
+
+.reviewer-name {
+  padding-top: 3px;
+  padding-left: 7px;
+}
+
+.edit-btn {
+  margin-top: 10px;
 }

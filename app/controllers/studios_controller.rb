@@ -1,15 +1,15 @@
 class StudiosController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index, :top, :searches, :ranks, :maps]
 
   def new
     @studio = Studio.new
   end
 
   def create
-    studio = Studio.new(studio_params)
-    studio.user_id = current_user.id
-    if studio.save
-      redirect_to studio_path(studio)
+    @studio = Studio.new(studio_params)
+    @studio.user_id = current_user.id
+    if @studio.save
+      redirect_to studio_path(@studio)
       flash[:notice] = "投稿が保存されました"
     else
       render 'new'
@@ -39,15 +39,43 @@ class StudiosController < ApplicationController
 
   def show
     @studio = Studio.find(params[:id])
+    @reviews = @studio.reviews.order("id DESC")
+    @review = Review.new
+    gon.studio = @studio
+  end
+
+  def index
+    @studios = Studio.page(params[:page]).per(9).order(created_at: :desc)
+  end
+
+  def top
+    @studios = Studio.order(created_at: :desc).limit(10)
+    @reviews = Review.order(created_at: :desc).limit(10)
+    @tags = Tag.all
+  end
+
+  def searches
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @studios = Studio.where(id: StudioTag.where(tag_id: params[:tag_id]).select(:studio_id)).page(params[:page]).per(9).order(creted_at: :desc)
+    else
+      @studios = Studio.search(params[:search]).page(params[:page]).per(9).order(creted_at: :desc)
+    end
+    # select * from studios where address like '%大宮%'
+    # Studio.where("address like '%大宮%'")
+  end
+
+  def ranks
+    @ranks = Studio.find(Favorite.group(:studio_id).order('count(studio_id) desc').limit(9).pluck(:studio_id))
+  end
+
+  def maps
+    gon.studios = Studio.all
   end
 
   private
 
   def studio_params
-    params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids:[])
+    params.require(:studio).permit(:studio_image, :name, :address, :explanation, :url, tag_ids: [])
   end
-
 end
-
-# { tag_ids: [] }
-# , tags_attributes:[tag_ids: []]

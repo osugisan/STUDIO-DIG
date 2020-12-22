@@ -1,13 +1,32 @@
-<div class="col-lg-10 mx-auto">
-  <div class="card info-card">
-    <div class="d-flex justify-content-around">
-      <%= link_to image_tag('index.PNG',:width => "90",:height => "70" ), studios_path, class: "info-item" %>
+<div class="container">
+  <div class="row">
+   <div class="col-lg-12">
+      <div class="card border-light info-card">
+        <div class="d-flex justify-content-around">
+          <% if user_signed_in? %>
+            <%= link_to image_tag('index.PNG',:width => "90",:height => "70" ), studios_path, class: "info-item" %>
 
-      <%= link_to image_tag('rank.PNG',:width => "90",:height => "70" ), ranks_studios_path, class: "info-item"  %>
+            <%= link_to image_tag('rank.PNG',:width => "90",:height => "70" ), ranks_studios_path, class: "info-item"  %>
 
-      <%= link_to image_tag('bookmark.PNG',:width => "90",:height => "70" ), favorites_user_path, class: "info-item"  %>
+            <%= link_to image_tag('bookmark.PNG',:width => "90",:height => "70" ), favorites_user_path(current_user), class: "info-item"  %>
 
-      <%= link_to image_tag('new.PNG',:width => "90",:height => "70" ), new_studio_path, class: "info-item"  %>
+            <%= link_to image_tag('new.PNG',:width => "90",:height => "70" ), new_studio_path, class: "info-item"  %>
+
+            <%= link_to image_tag('location.jpg',:width => "90",:height => "70" ), maps_studios_path, class: "info-item"  %>
+          <% else %>
+            <%= link_to image_tag('index.PNG',:width => "90",:height => "70" ), studios_path, class: "info-item" %>
+
+            <%= link_to image_tag('rank.PNG',:width => "90",:height => "70" ), ranks_studios_path, class: "info-item"  %>
+
+            <%= link_to image_tag('bookmark.PNG',:width => "90",:height => "70" ), favorites_user_path(current_user), class: "info-item"  %>
+
+            <%= link_to image_tag('new.PNG',:width => "90",:height => "70" ), new_studio_path, class: "info-item"  %>
+
+            <%= link_to image_tag('location.jpg',:width => "90",:height => "70" ), maps_studios_path, class: "info-item"  %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
