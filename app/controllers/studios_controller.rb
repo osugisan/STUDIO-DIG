@@ -1,5 +1,5 @@
 class StudiosController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index, :top, :searches, :ranks, :maps]
 
   def new
     @studio = Studio.new
@@ -38,6 +38,7 @@ class StudiosController < ApplicationController
   end
 
   def show
+    @user = current_user
     @studio = Studio.find(params[:id])
     @reviews = @studio.reviews.order("id DESC")
     @review = Review.new
