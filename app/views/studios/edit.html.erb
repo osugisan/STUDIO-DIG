@@ -1,26 +1,26 @@
 <div class="studio-new-logo text-center">
   <h2>スタジオ編集</h2>
 </div>
-<div class="card new-card col-lg-6 mx-auto">
+<div class="card new-card col-lg-7 mx-auto">
   <div class="form-wrap">
+    <%= form_with model: @studio, local: true do |f| %>
 
-    <div class="error-message">
-      <% if @studio.errors.any?%>
+    <% if @studio.errors.any?%>
+      <div class="error-message">
         <ul>
           <% @studio.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
-    <%= form_with model: @studio, local: true do |f| %>
       <div class="form-group row">
-        <div class="col-lg-5">
+        <div class="col-lg-6">
           <%= f.label :"スタジオ写真" %>
           <%= f.attachment_field :studio_image, id: "image" %>
         </div>
-        <div class="item-image col-lg-7" id="result">
+        <div class="item-image col-lg-6" id="result">
           <%= attachment_image_tag @studio, :studio_image, class: "card img-square", fallback: "no_img.png", size:"300x200" %>
         </div>
       </div>

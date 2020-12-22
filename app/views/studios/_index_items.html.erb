@@ -1,0 +1,60 @@
+    <!--スタジオ一覧アイテム-->
+    <div class="row row-height">
+      <% studios.each do |studio| %>
+      <div class="col-lg-4 row-eq-height">
+        <div class="card studio-items">
+          <%= attachment_image_tag studio, :studio_image, fallback: "no_img.png", size:"270x170", class: "card-img-top", style: "border-bottom: 1px solid rgba(0, 0, 0, .0975);"%>
+          <div class="card-body">
+            <div class="card-title">
+              <%= link_to studio_path(studio) do%>
+              <%= studio.name %>
+              <% end %>
+            </div>
+
+            <div class="card-text">
+              <%= studio.address %>
+            </div>
+
+            <div class="card-text">
+              <!--星評価平均点-->
+              <div class="star-item">
+                <div id="star_ave_<%= studio.id %>"></div>
+                <div class="star-point"><%= studio.reviews.average(:rank).to_f.round(1) %></div>
+              </div>
+              <script>
+              $('#star_ave_<%= studio.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= studio.reviews.average(:rank).to_f.round(1) %>,
+              });
+              </script>
+              <!--星評価-->
+            </div>
+
+            <div clas="card-text">
+              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= studio.favorites.count %>
+
+              <span>　<i class="far fa-comment"></i><%= studio.reviews.count %>件</span>
+            </div>
+
+            <div class="card-text">
+            <% studio.tags.each do |tag| %>
+              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm" %>
+            <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+      <!--スタジオ一覧アイテム-->
+
+  </div>
+</div>
+<%= paginate studios %>

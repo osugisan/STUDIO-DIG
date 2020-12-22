@@ -14,34 +14,41 @@
  *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@font-face{
+ font-family: 'k-font';
+ src: font-url('keifont.woff') format('woff'),
+      font-url('keifont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }
+
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
+  display: none;
 }
 
-.full-page {
-  width: 100vw;
-  height: 100vh;
-  font-size: 14px;
-  color: #262626;
-}
-
-main {
-  flex: 1;
+.main-content {
+  padding-top: 60px;
+  font-family: Times, 'k-font';
+  color: #868686;
 }
 
 .error-message {
-  color:#262626;
+  color:red;
   background:#FFEBE8;
-  text-align: center;
   border:2px solid #990000;
   padding:12px; font-weight:850;
 }
+
+.pagination {
+  justify-content: center;
+}
+
 @import "bootstrap";
 
 @import "layouts/navbar";
 @import "layouts/footer";
 @import "users/devise";
+@import "studios/index";
+@import "studios/search";
+@import "studios/top";
+@import "studios/map";

@@ -5,23 +5,36 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <!-- drawer.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+    <!-- iScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <!-- drawer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+
+
   </head>
 
-  <body>
-    <div id="wrapper">
-      <div class="full-page">
+  <div class="footerFixed">
 
-      <%= render 'partial/navbar' %>
+  <body class="drawer drawer--right">
 
-      <%= render 'partial/flash' %>
+  <%= render 'partial/navbar' %>
 
-      <%= yield %>
+  <div class="container main-content">
+    <%= render 'partial/flash' %>
 
-      </div>
-      <!--<%= render 'partial/footer' %>-->
-    </div>
+    <%= yield %>
+  </div>
+
+  <%= render 'partial/footer' %>
+
+  </div>
+
   </body>
 </html>

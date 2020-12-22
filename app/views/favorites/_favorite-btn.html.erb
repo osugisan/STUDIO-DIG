@@ -1,21 +1,21 @@
-<div id="favorite-btn_<%= @studio.id %>">
-  <% if @studio.favorited_by?(current_user) %>
+<div id="favorite-btn_<%= studio.id %>">
+  <% if studio.favorited_by?(current_user) %>
     <div class="fav-smallitem">
-      <%= link_to studio_favorites_path(@studio), method: :DELETE, remote: true do %>
+      <%= link_to studio_favorites_path(studio), method: :DELETE, remote: true do %>
         <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
       <% end %>
       <div class="fav-string">
-        <%= @studio.favorites.count %>
+        <%= studio.favorites.count %>
         <span>　お気に入り</span>
       </div>
     </div>
   <% else %>
     <div class="fav-smallitem">
-      <%= link_to studio_favorites_path(@studio), method: :POST, remote: true do %>
+      <%= link_to studio_favorites_path(studio), method: :POST, remote: true do %>
         <i class="far fa-heart" style="color: red;"></i>
       <% end %>
       <div class="fav-string">
-        <%= @studio.favorites.count %>
+        <%= studio.favorites.count %>
         <span>　お気に入り</span>
       </div>
     </div>

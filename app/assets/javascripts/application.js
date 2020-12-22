@@ -12,12 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery3
 //= require popper
+// require i18n
+// require i18n/translations
+
 
 /*!
  * Raty - A Star Rating Plugin
@@ -30,6 +33,20 @@
  *
  */
 
+
+// フラッシュイン
+$(function() {
+  $('body').fadeIn(400);
+});
+
+// アラートメッセージscript
+$(function () {
+    $(document).ready(function() {
+        $("#notifyMessage").stop().fadeIn(1200).delay(1500).fadeOut("slow");
+    });
+});
+
+// 星評価script
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
@@ -789,3 +806,4 @@
     return Raty;
   })();
 }));
+// 星評価script

@@ -3,5 +3,5 @@ class Favorite < ApplicationRecord
   belongs_to :studio
 
   validates_uniqueness_of :studio_id, scope: :user_id
-  # バリデーション（ユーザーと記事の組み合わせは一意）
+  # バリデーション（ユーザーとスタジオの組み合わせは一意）
 end
