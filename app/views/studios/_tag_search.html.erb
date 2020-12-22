@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-10 offset-lg-1">
+  <div class="col-lg-10 offset-lg-1 col-xs-10 offset-xs-1">
     <div class="location-search">
       <%= link_to maps_studios_path, class:"btn btn-danger btn-lg btn-block" do %>
         <i class="far fa-compass"></i>
@@ -9,29 +9,29 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12 offset-lg-1">
+  <div class="col-lg-12 offset-lg-1 col-xs-12 offset-xs-1">
     <h4 class="area-logo"><i class="fas fa-fire-alt"></i>人気エリアから探す</h4>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-xs-12">
     <div class="row">
-      <div class="col-lg-6 text-right area"><%= link_to image_tag('shinjuku.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "新宿") %></div>
-      <div class="col-lg-6 text-left area"><%= link_to image_tag('ikebukuro.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "池袋") %></div>
+      <div class="col-lg-6 text-right area col-xs-12"><%= link_to image_tag('shinjuku.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "新宿") %></div>
+      <div class="col-lg-6 text-left area col-xs-12"><%= link_to image_tag('ikebukuro.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "池袋") %></div>
     </div>
     <div class="row area-search">
-      <div class="col-lg-6 text-right area"><%= link_to image_tag('shibuya.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "渋谷") %></div>
-      <div class="col-lg-6 text-left area"><%= link_to image_tag('akiba.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "秋葉原") %></div>
+      <div class="col-lg-6 text-right area col-xs-12"><%= link_to image_tag('shibuya.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "渋谷") %></div>
+      <div class="col-lg-6 text-left area col-xs-12"><%= link_to image_tag('akiba.jpg',:width => "400",:height => "150" ), searches_studios_path(search: "秋葉原") %></div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12 offset-lg-1">
+  <div class="col-lg-11 offset-lg-1 col-xs-12">
     <h4 class="tag-logo"><i class="fas fa-tags"></i>タグから探す</h4>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12 offset-lg-1">
+  <div class="col-lg-11 offset-lg-1 col-xs-12">
     <% @tags.each do |tag| %>
       <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm" %>
     <% end %>
