@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @studio = Studio.find(params[:studio_id])

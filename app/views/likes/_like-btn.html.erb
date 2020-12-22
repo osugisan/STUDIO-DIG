@@ -1,7 +1,7 @@
 <div>
   <% if review.liked_by?(current_user) %>
     <div class="like-smallitem">
-      <%= link_to studio_review_likes_path(@studio, id: review.id, review_id: review.id), method: :DELETE, remote: true do %>
+      <%= link_to studio_review_likes_path(@studio, id: review.id, review_id: review.id), method: :DELETE, local: true do %>
         <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
       <% end %>
       <div class="like-string">
@@ -11,7 +11,7 @@
     </div>
   <% else %>
     <div class="like-smallitem">
-      <%= link_to studio_review_likes_path(@studio, id: review.id, review_id: review.id), method: :POST, remote: true do %>
+      <%= link_to studio_review_likes_path(@studio, id: review.id, review_id: review.id), method: :POST, local: true do %>
         <i class="far fa-heart" style="color: red;"></i>
       <% end %>
       <div class="like-string">

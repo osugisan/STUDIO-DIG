@@ -44,8 +44,10 @@
         <li>
           <%= form_with url: searches_studios_url, method: :get, local: true do |f| %>
             <div class="input-group">
-              <%= f.text_field :search, placeholder: "スタジオ名,場所,etc...", class: "form-control input"%>
-              <%= f.submit "検索", class: "input-group-append" %>
+              <%= f.text_field :search, placeholder: "キーワードを入力..", class: "form-control"%>
+              <div class="input-group-prepend">
+                <%= f.submit "", class: "input-group-text" %>
+              </div>
             </div>
           <% end %>
         </li>
