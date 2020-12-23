@@ -37,7 +37,7 @@
 
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-10 offset-lg-1 col-sm-12">
     <h4 class="top-studio-logo">投稿したレビュー</h4>
   </div>
 </div>
@@ -45,13 +45,13 @@
 <%= render 'studios/top_reviews', reviews: @reviews %>
 
 <div class="row">
-  <div class="col-lg-12 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", reviews_user_path(@user) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-10 offset-lg-1 col-sm-12">
     <h4 class="top-studio-logo">投稿したスタジオ</h4>
   </div>
 </div>
@@ -59,7 +59,7 @@
 <%= render 'studios/top_studios', studios: @studios %>
 
 <div class="row">
-  <div class="col-lg-12 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", studios_user_path(@user) %>
   </div>
 </div>
