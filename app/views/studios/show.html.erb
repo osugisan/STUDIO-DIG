@@ -9,7 +9,7 @@
       <div class="col-lg-6 text-center">
         <%= attachment_image_tag @studio, :studio_image, fallback: "no_img.png", size:"450x300", class: "shop-image" %>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-5">
         <h3 class="shop-name"><%= @studio.name%></h3>
 
           <!--星評価平均点-->
@@ -25,14 +25,12 @@
             </div>
           <% end %>
 
-        <span class="shop-explanation"><%= @studio.explanation%></span>
+        <span class="shop-explanation"><%= simple_format(@studio.explanation) %></span>
         <div class="shop-tag">
           <% @studio.tags.each do |tag| %>
-              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success" %>
+              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success tag-item" %>
           <% end %>
         </div>
-
-        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
 
         <div class="edit-btn">
           <%= link_to "スタジオ情報を編集する", edit_studio_path(@studio), class: "btn btn-info btn-sm" %>
@@ -40,6 +38,22 @@
             <%= link_to "スタジオを削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger btn-sm" %>
           <% end %>
         </div>
+
+        <!--SNSシェアボタン-->
+        <div class="d-flex flex-colmn">
+          <%= link_to "http://twitter.com/share?url=#{request.url}/&text=お気に入りスタジオをディグろう/&hashtags=スタジオディグ" do %>
+            <img class="sns-icon" src="https://img.icons8.com/plasticine/200/000000/twitter.png"/>
+          <% end %>
+
+          <div class="fb-share-button" data-href="https://studio--dig.com" data-layout="button" data-size="large">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstudio--dig.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+              <img class="sns-icon" src="https://img.icons8.com/plasticine/200/000000/facebook.png"/>
+            </a>
+          </div>
+          <span class="d-flex align-items-center">　SNSでシェア</span>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -88,7 +102,7 @@
         <!--星評価表示-->
 
         <h6>「<%= review.title %>」</br></h6>
-        <h7>　<%= review.body %></h7>
+        <h7>　<%= simple_format(review.body) %></h7>
       </div>
       <div class="row">
         <div class="review-bottom col-lg-8">

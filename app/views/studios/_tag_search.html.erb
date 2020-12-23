@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   <div class="col-lg-10 offset-lg-1 col-sm-12">
-    <h4 class="area-logo"><i class="fas fa-fire-alt"></i>人気エリアから探す</h4>
+    <h2 class="area-logo"><i class="fas fa-fire-alt"></i>人気エリアから探す</h2>
   </div>
 </div>
 <div class="row">
@@ -27,13 +27,13 @@
 </div>
 <div class="row">
   <div class="col-lg-10 offset-lg-1 col-sm-12">
-    <h4 class="tag-logo"><i class="fas fa-tags"></i>タグから探す</h4>
+    <h2 class="tag-logo"><i class="fas fa-tags"></i>タグから探す</h2>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-10 offset-lg-1 col-sm-12">
     <% @tags.each do |tag| %>
-      <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm" %>
+      <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
