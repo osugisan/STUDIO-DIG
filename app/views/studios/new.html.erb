@@ -22,7 +22,7 @@
           <%= f.attachment_field :studio_image, id: "image" %>
         </div>
         <div class="item-image col-lg-6" id="result">
-          <%= attachment_image_tag @studio, :studio_image, class: "card img-square", fallback: "no_img.png", size:"300x200" %>
+          <%= attachment_image_tag @studio, :studio_image, class: "card img-square", fallback: "no_img.png", size: "300x200" %>
         </div>
       </div>
 
@@ -74,7 +74,7 @@ $(function() {
 
         fileReader.onload = function(event) {
             var loadedImageUri = event.target.result;
-             $('#result').html('<img src="' + fileReader.result + '"/>')
+             $('.img-square').attr('src', loadedImageUri);
         };
 
         fileReader.readAsDataURL(selectedFile);

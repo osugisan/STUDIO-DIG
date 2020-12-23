@@ -17,14 +17,14 @@
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group">
           <div class="user-edit-image text-center">
-            <%= attachment_image_tag @user, :profile_image, size:"60x60", class: "profile_image", fallback: "no_user.jpg" %>
+            <%= attachment_image_tag @user, :profile_image, size:"60x60", class: "profile_image img-square", fallback: "no_user.jpg" %>
           </div>
           <div class="text-center">
             <%= f.label :profile_image, "サムネイル" %>
           </div>
           <div class="text-center">
             <% unless @user.email == "test@example.com" %>
-              <%= f.attachment_field :profile_image, class: "user-edit-form" %>
+              <%= f.attachment_field :profile_image, class: "user-edit-form", id: "image" %>
             <% end %>
           </div>
         </div>
@@ -60,3 +60,20 @@
 
     </div>
 </div>
+
+
+<script>
+$(function() {
+    $('#image').on('change', function() {
+        var selectedFile = this.files[0];
+        var fileReader = new FileReader();
+
+        fileReader.onload = function(event) {
+            var loadedImageUri = event.target.result;
+             $('.img-square').attr('src', loadedImageUri )
+        };
+
+        fileReader.readAsDataURL(selectedFile);
+    });
+});
+</script>
