@@ -44,7 +44,7 @@
 
             <div class="card-text">
             <% studio.tags.each do |tag| %>
-              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm" %>
+              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success btn-sm tag-item" %>
             <% end %>
             </div>
 

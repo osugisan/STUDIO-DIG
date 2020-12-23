@@ -79,7 +79,7 @@ $(function() {
 
         fileReader.onload = function(event) {
             var loadedImageUri = event.target.result;
-             $('#result').html('<img src="' + fileReader.result + '"/>')
+             $('.img-square').attr('src', loadedImageUri )
         };
 
         fileReader.readAsDataURL(selectedFile);
