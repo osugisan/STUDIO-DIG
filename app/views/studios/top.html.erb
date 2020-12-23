@@ -3,29 +3,29 @@
 <%= render 'studios/tag_search' %>
 
 <div class="row">
-  <div class="col-lg-10 offset-lg-1 col-sm-12">
-    <h4 class="top-studio-logo">新着レビュー</h4>
+  <div class="col-lg-11 mx-auto col-sm-12">
+    <h2 class="top-studio-logo">新着レビュー</h2>
   </div>
 </div>
 
 <%= render 'studios/top_reviews', reviews: @reviews %>
 
 <div class="row">
-  <div class="col-lg-10 offset-lg-1 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", studios_path %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-10 offset-lg-1 col-sm-12">
-    <h4 class="top-studio-logo">新着スタジオ</h4>
+  <div class="col-lg-11 mx-auto col-sm-12">
+    <h2 class="top-studio-logo">新着スタジオ</h>
   </div>
 </div>
 
 <%= render 'studios/top_studios', studios: @studios %>
 
 <div class="row">
-  <div class="col-lg-10 offset-lg-1 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", studios_path %>
   </div>
 </div>
