@@ -1,12 +1,10 @@
-<% if user_signed_in? %>
-  <%= render 'studios/info' %>
-<% end %>
+<%= render 'studios/info' %>
 
 <!--スタジオ詳細-->
 <div class="row studio-container">
   <div class="col-lg-12 mx-auto">
     <div class="row">
-      <div class="col-lg-6 text-center">
+      <div class="col-lg-6 col-12 text-center studio-shop">
         <%= attachment_image_tag @studio, :studio_image, fallback: "no_img.png", size:"450x300", class: "shop-image" %>
       </div>
       <div class="col-lg-5">
@@ -40,16 +38,20 @@
         </div>
 
         <!--SNSシェアボタン-->
-        <div class="d-flex flex-colmn">
+        <div class="d-flex flex-colmn sns-btn">
           <%= link_to "http://twitter.com/share?url=#{request.url}/&text=お気に入りスタジオをディグろう/&hashtags=スタジオディグ" do %>
-            <img class="sns-icon" src="https://img.icons8.com/plasticine/200/000000/twitter.png"/>
+            <%= image_tag asset_path("twitter.jpg"), class:"sns-icon" %>
           <% end %>
 
           <div class="fb-share-button" data-href="https://studio--dig.com" data-layout="button" data-size="large">
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstudio--dig.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-              <img class="sns-icon" src="https://img.icons8.com/plasticine/200/000000/facebook.png"/>
+              <%= image_tag asset_path("facebook.jpg"), class:"sns-icon" %>
             </a>
           </div>
+
+          <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="https://studio--dig.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
           <span class="d-flex align-items-center">　SNSでシェア</span>
         </div>
 
@@ -130,14 +132,14 @@
 
         <%= render 'partial/error_message', model: f.object %>
 
-        <div class="form-group row">
+        <div class="form-group row review-zone">
           <div id="star">
             <%= f.label :rank, "評価　" %>
             <%= f.hidden_field :rank, id: :review_star %>
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row review-zone">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: "form-control", placeholder: "一言で言うと.." %>
 

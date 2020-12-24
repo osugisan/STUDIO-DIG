@@ -1,12 +1,16 @@
-<div class="notification" id="notifyMessage">
- <% if flash[:notice] %>
-    <div class="alert alert-info">
-      <%= flash[:notice] %>
+<div class="row">
+  <div class="col-lg-10 col-10 mx-auto">
+    <div class="notification" id="notifyMessage">
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
+  </div>
 </div>

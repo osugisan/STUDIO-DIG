@@ -56,6 +56,7 @@
   text-align: center;
   margin: 40px 0;
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  padding: 10px 0;
 }
 
 .star-item {
@@ -107,10 +108,11 @@
 }
 
 .sns-icon {
-  width: 70px;
-  height: 70px;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
 }
 
-.sns-str {
-
+.sns-btn {
+  margin-top: 10px;
 }

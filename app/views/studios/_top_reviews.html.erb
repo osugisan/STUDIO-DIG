@@ -60,6 +60,11 @@ $( function() {
     var swiper = new Swiper('.swiper-container', {
       	spaceBetween: 10,
 	      slidesPerView: 4,
+	      breakpoints: {
+	        980: {
+	          slidesPerView: 1.5
+	        },
+	      },
 	      freeMode: true,
       	mousewheel: {
       		forceToAxis: false,

@@ -1,0 +1,59 @@
+@media screen and (max-width: 500px) {
+
+// ヘッダー
+.nav-icon {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+.brand-center {
+  padding: 0;
+}
+
+.header-logo {
+  width: 150px;
+  height: 53px;
+  margin-top: 10px;
+}
+
+// トップページ
+.area-image {
+  text-align: center;
+}
+
+.area {
+  padding: 10px;
+}
+
+// インフォバー
+.info-card img {
+  width: 80%;
+  max-width: 80%;
+  height: auto;
+}
+.info-item {
+  text-align: center;
+}
+
+// スタジオ詳細
+.studio-shop img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.shop-name {
+  margin-top: 20px;
+}
+
+.review-body {
+  margin: 18px 0;
+}
+
+.review-zone {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+}
