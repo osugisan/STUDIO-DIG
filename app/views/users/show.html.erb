@@ -20,10 +20,10 @@
     <%= @user.introduction %>
   </div>
 </div>
-<% if @user == current_user %>
+<% if @user == current_user || current_user.admin? %>
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
-    <%= link_to "P R O F I L E　E D I T", edit_user_path(current_user), class: "btn btn-outline-success" %>
+    <%= link_to "P R O F I L E　E D I T", edit_user_path(@user), class: "btn btn-outline-success" %>
   </div>
 </div>
 <% end %>

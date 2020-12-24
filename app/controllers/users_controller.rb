@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -19,6 +20,17 @@ class UsersController < ApplicationController
     else
       render 'edit'
       flash[:alert] = "ユーザー情報の更新に失敗しました"
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to root_path
+      flash[:notice] = "退会処理が完了しました"
+    else
+      render 'edit'
+      flash[:alert] = "退会処理に失敗しました"
     end
   end
 
@@ -47,6 +59,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :introduction, :profile_image)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to user_path(@user) unless @user == current_user
+    flash[:notice] = "不正アクセスすな！"
   end
 
 end
