@@ -39,6 +39,10 @@ class UsersController < ApplicationController
     @favorite_list = Kaminari.paginate_array(Studio.find(favorites)).page(params[:page]).per(9)
   end
 
+  def index
+    @users = User.all.page(params[:page]).per(5).order(creted_at: :desc)
+  end
+
   private
 
   def user_params

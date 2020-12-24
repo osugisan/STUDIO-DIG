@@ -48,7 +48,6 @@ body {
 }
 
 @import "bootstrap";
-
 @import "layouts/navbar";
 @import "layouts/footer";
 @import "users/devise";
@@ -56,3 +55,4 @@ body {
 @import "studios/search";
 @import "studios/top";
 @import "studios/map";
+@import "layouts/responsive";

@@ -27,14 +27,11 @@
   </div>
 </div>
 <% end %>
-<% if @user == current_user %>
 <div classs="row user-wrap">
   <div class="col-lg-3 col-sm-6 mx-auto text-center user-btn">
     <%= link_to "お 気 に 入 り の ス タ ジ オ", favorites_user_path(current_user), class: "btn btn-outline-danger" %>
   </div>
 </div>
-<% end %>
-
 
 <div class="row">
   <div class="col-lg-11 mx-auto col-sm-12">
