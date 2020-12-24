@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(5).order(creted_at: :desc)
+    @users = User.all.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   private

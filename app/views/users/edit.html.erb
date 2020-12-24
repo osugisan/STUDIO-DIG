@@ -23,7 +23,9 @@
             <%= f.label :profile_image, "サムネイル" %>
           </div>
           <div class="text-center">
+            <% unless @user.email == "test@example.com" %>
               <%= f.attachment_field :profile_image, class: "user-edit-form", id: "image" %>
+            <% end %>
           </div>
         </div>
 
