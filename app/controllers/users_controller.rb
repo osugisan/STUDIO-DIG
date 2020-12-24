@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(5).order(created_at: :desc)
+    @users = User.all.page(params[:page]).per(5)
   end
 
   private
@@ -63,8 +63,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to user_path(@user) unless @user == current_user
-    flash[:notice] = "不正アクセスすな！"
+    redirect_to user_path(@user) unless current_user.admin? || @user == current_user
   end
 
 end
