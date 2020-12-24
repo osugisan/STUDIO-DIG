@@ -23,14 +23,14 @@
             <%= f.label :profile_image, "サムネイル" %>
           </div>
           <div class="text-center">
-            <% if @user.email != "test@example.com" || current_user.admin? || @user == current_user %>
+            <% if @user.email != "test@example.com" || current_user.admin? %>
               <%= f.attachment_field :profile_image, class: "user-edit-form", id: "image" %>
             <% end %>
           </div>
         </div>
 
         <div class="form-group">
-          <% if @user.email != "test@example.com" || current_user.admin? || @user == current_user %>
+          <% if @user.email != "test@example.com" || current_user.admin? %>
             <%= f.text_field :name, class: "form-control" %>
           <% else %>
             <%= f.text_field :name, class: "form-control", :readonly => true %>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-          <% if @user.email != "test@example.com" || current_user.admin? || @user == current_user %>
+          <% if @user.email != "test@example.com" || current_user.admin? %>
             <%= f.email_field :email, class: "form-control" %>
           <% else %>
             <%= f.email_field :email, class: "form-control", :readonly => true %>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="form-group">
-          <% if @user.email != "test@example.com" || current_user.admin? || @user == current_user %>
+          <% if @user.email != "test@example.com" || current_user.admin? %>
             <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control" %>
           <% else %>
             <%= f.text_area :introduction, placeholder:"自己紹介など...", class: "form-control", :readonly => true %>
@@ -58,8 +58,9 @@
         </div>
       <% end %>
       <div class="actions text-center user-withdrawal">
-        <% unless @user.email != "test@example.com" || current_user.admin? || @user == current_user %>
+        <% if @user.email != "test@example.com" || current_user.admin? %>
           <%= link_to "退会する", user_path(@user), data: { confirm: '本当に退会しますか？' }, method: :delete, class: "btn btn-danger" %>
+        <% else %>
         <% end %>
       </div>
 
