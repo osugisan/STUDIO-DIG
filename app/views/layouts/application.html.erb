@@ -27,7 +27,9 @@
       <div class="container-fluid">
         <div class="main-content">
         <%= render 'partial/navbar' %>
-        <%= render 'partial/flash' %>
+        <% unless controller_name == 'studios' && action_name == 'show' %>
+          <%= render 'partial/flash' %>
+        <% end %>
 
         <%= yield %>
 

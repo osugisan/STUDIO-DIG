@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-10 col-10 mx-auto">
+    <div class="notification" id="notifyMessage3">
+      <% if flash[:notice3] %>
+        <div class="alert alert-info">
+          <%= flash[:notice3] %>
+        </div>
+      <% end %>
+      <% if flash[:alert3] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert3] %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
