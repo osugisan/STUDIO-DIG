@@ -10,7 +10,7 @@ class StudiosController < ApplicationController
     @studio.user_id = current_user.id
     if @studio.save
       redirect_to studio_path(@studio)
-      flash[:notice] = "投稿が保存されました"
+      flash[:notice3] = "投稿が保存されました"
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     if @studio.update(studio_params)
       redirect_to studio_path(@studio)
-      flash[:notice] = "投稿が更新されました"
+      flash[:notice3] = "投稿が更新されました"
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     @studio.destroy
     redirect_to studios_path
-    flash[:notice] = "投稿が削除されました"
+    flash[:alert] = "投稿が削除されました"
   end
 
   def show

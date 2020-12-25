@@ -1,3 +1,4 @@
+<%= render 'partial/flash_studio' %>
 <%= render 'studios/info' %>
 
 <!--スタジオ詳細-->
@@ -64,7 +65,7 @@
 
 <div class="row review-container">
   <div class="col-lg-12 mx-auto">
-    <div class="card border-light url-bar">
+    <div class="card border-light url-bar" id="reviewMessage">
      <h4>公式ＨＰへ</h4>
      <% if @studio.url.blank? %>
        <%= link_to "公式HPを登録する！", edit_studio_path(@studio) %>
@@ -76,6 +77,9 @@
 
   <!--口コミ表示部-->
   <div class="col-lg-9 mx-auto">
+
+    <%= render 'partial/flash_review' %>
+
     <h4><i class="far fa-comments"></i>みんなの口コミ</h4>
     <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span>
     <% @reviews.each do |review| %>

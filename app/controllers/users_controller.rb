@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       redirect_to root_path
-      flash[:notice] = "退会処理が完了しました"
+      flash[:alert] = "退会処理が完了しました"
     else
       render 'edit'
       flash[:alert] = "退会処理に失敗しました"
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def studios
     @user = User.find(params[:id])
-    @studios = Studio.where(user_id: @user).page(params[:page]).per(9).order(creted_at: :desc)
+    @studios = Studio.where(user_id: @user).page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def reviews
