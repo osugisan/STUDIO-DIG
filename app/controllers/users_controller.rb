@@ -55,6 +55,16 @@ class UsersController < ApplicationController
     @users = User.all.page(params[:page]).per(5)
   end
 
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings.page(params[:page]).per(5)
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers.page(params[:page]).per(5)
+  end
+
   private
 
   def user_params
