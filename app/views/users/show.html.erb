@@ -17,9 +17,33 @@
 </div>
 <div class="row user-wrap">
   <div class="col-lg-4 mx-auto text-center user-introduction">
+    <span>
+      <%= link_to follows_user_path(@user) do %>
+        <%= @user.followings.count %>
+      <% end %>
+      フォロー　|
+      <%= link_to followers_user_path(@user) do %>
+        　<%= @user.followers.count %>
+      <% end %>
+      フォロワー
+  </div>
+</div>
+<div class="row user-wrap">
+  <div class="col-lg-4 mx-auto text-center user-introduction">
     <%= simple_format(@user.introduction) %>
   </div>
 </div>
+<% if @user != current_user %>
+<div classs="row user-wrap">
+  <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
+    <% if @user.followed_by?(current_user) %>
+      <%= link_to "フォローを済み", relationships_path(@user), method: :delete, class: "btn btn-info" %>
+    <% else %>
+      <%= link_to "フォローする", relationships_path(@user), method: :post, class: "btn btn-outline-info" %>
+    <% end %>
+  </div>
+</div>
+<% end %>
 <% if @user == current_user || current_user.admin? %>
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
