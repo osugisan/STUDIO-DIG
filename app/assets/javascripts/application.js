@@ -48,13 +48,13 @@ $(function () {
 
 $(function () {
     $(document).ready(function() {
-        $("#notifyMessage2").stop().fadeIn(1200).delay(3500).fadeOut("slow");
+        $("#notifyMessage2").stop().fadeIn(1200).delay(1500).fadeOut("slow");
     });
 });
 
 $(function () {
     $(document).ready(function() {
-        $("#notifyMessage3").stop().fadeIn(1200).delay(1500).fadeOut("slow");
+        $("#notifyMessage3").stop().fadeIn(1200).delay(2500).fadeOut("slow");
     });
 });
 
