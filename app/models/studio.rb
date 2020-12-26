@@ -10,10 +10,9 @@ class Studio < ApplicationRecord
 
   attachment :studio_image
 
-  accepts_nested_attributes_for :tags
-
-  validates :name, presence: true
-  validates :address, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :address, presence: true, uniqueness: true
+  validates :url, uniqueness: true, allow_blank: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

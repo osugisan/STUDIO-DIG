@@ -1,15 +1,14 @@
-<% if user_signed_in? %>
-  <%= render 'studios/info' %>
-<% end %>
+<%= render 'partial/flash_studio' %>
+<%= render 'studios/info' %>
 
 <!--スタジオ詳細-->
 <div class="row studio-container">
   <div class="col-lg-12 mx-auto">
     <div class="row">
-      <div class="col-lg-6 text-center">
+      <div class="col-lg-6 col-12 text-center studio-shop">
         <%= attachment_image_tag @studio, :studio_image, fallback: "no_img.png", size:"450x300", class: "shop-image" %>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-5">
         <h3 class="shop-name"><%= @studio.name%></h3>
 
           <!--星評価平均点-->
@@ -25,21 +24,39 @@
             </div>
           <% end %>
 
-        <span class="shop-explanation"><%= @studio.explanation%></span>
+        <span class="shop-explanation"><%= simple_format(@studio.explanation) %></span>
         <div class="shop-tag">
           <% @studio.tags.each do |tag| %>
-              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success" %>
+              <%= link_to tag.name, searches_studios_path(tag_id: tag.id), class: "btn btn-success tag-item" %>
           <% end %>
         </div>
-
-        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
 
         <div class="edit-btn">
           <%= link_to "スタジオ情報を編集する", edit_studio_path(@studio), class: "btn btn-info btn-sm" %>
-          <% if user_signed_in? && @studio.user == current_user %>
+          <% if user_signed_in? && @studio.user == current_user || user_signed_in? && current_user.admin? %>
             <%= link_to "スタジオを削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger btn-sm" %>
           <% end %>
         </div>
+
+        <!--SNSシェアボタン-->
+        <div class="d-flex flex-colmn sns-btn">
+          <%= link_to "http://twitter.com/share?url=#{request.url}/&text=お気に入りスタジオをディグろう/&hashtags=スタジオディグ" do %>
+            <%= image_tag asset_path("twitter.jpg"), class:"sns-icon" %>
+          <% end %>
+
+          <div class="fb-share-button" data-href="https://studio--dig.com" data-layout="button" data-size="large">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstudio--dig.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+              <%= image_tag asset_path("facebook.jpg"), class:"sns-icon" %>
+            </a>
+          </div>
+
+          <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="https://studio--dig.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
+          <span class="d-flex align-items-center">　SNSでシェア</span>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -48,7 +65,7 @@
 
 <div class="row review-container">
   <div class="col-lg-12 mx-auto">
-    <div class="card border-light url-bar">
+    <div class="card border-light url-bar" id="reviewMessage">
      <h4>公式ＨＰへ</h4>
      <% if @studio.url.blank? %>
        <%= link_to "公式HPを登録する！", edit_studio_path(@studio) %>
@@ -60,6 +77,9 @@
 
   <!--口コミ表示部-->
   <div class="col-lg-9 mx-auto">
+
+    <%= render 'partial/flash_review' %>
+
     <h4><i class="far fa-comments"></i>みんなの口コミ</h4>
     <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span>
     <% @reviews.each do |review| %>
@@ -88,12 +108,12 @@
         <!--星評価表示-->
 
         <h6>「<%= review.title %>」</br></h6>
-        <h7>　<%= review.body %></h7>
+        <h7>　<%= simple_format(review.body) %></h7>
       </div>
       <div class="row">
         <div class="review-bottom col-lg-8">
           <strong>投稿日：<%= time_ago_in_words(review.created_at).upcase + "前　" %></strong>
-          <% if review.user == current_user %>
+          <% if review.user == current_user || user_signed_in? && current_user.admin? %>
             <%= link_to " 　削除", studio_review_path(review.studio, review), method: :delete, data: {confirm: "削除しますか？"} %>
           <% end %>
         </div>
@@ -116,14 +136,14 @@
 
         <%= render 'partial/error_message', model: f.object %>
 
-        <div class="form-group row">
+        <div class="form-group row review-zone">
           <div id="star">
             <%= f.label :rank, "評価　" %>
             <%= f.hidden_field :rank, id: :review_star %>
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row review-zone">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: "form-control", placeholder: "一言で言うと.." %>
 

@@ -3,7 +3,7 @@
   height: 60px;
 }
 
-.nav-link {
+.nav-icon {
   font-size: 25px;
   color: black;
   margin-bottom: 20px;
@@ -24,6 +24,12 @@
 }
 
 .drawer-nav {
-  background-color: none;
-  background-image: linear-gradient( rgba(253, 251, 251, 0.6) 0%, rgba(235, 237, 238, 0.8) 100%)!important;
+  color: #868686!important;
+  background-color: transparent!important;
+  background-image: linear-gradient( rgba(253, 251, 251, 0.8) 0%, rgba(235, 237, 238, 0.9) 100%);
+  padding: 20px;
+}
+
+.nav-keysearch {
+  margin-bottom: 20px;
 }

@@ -6,17 +6,20 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     @review.studio_id = @studio.id
     if @review.save
-      redirect_to studio_path(@studio)
+      redirect_to studio_path(@studio, anchor: 'reviewMessage')
+      flash[:notice2] = "投稿が保存されました"
     else
       studio = @review.studio
       @reviews = studio.reviews
+      flash.now[:alert3] = "投稿に失敗しました。入力に足りない箇所があります"
       render 'studios/show'
     end
   end
 
   def destroy
     Review.find_by(id: params[:id], studio_id: params[:studio_id]).destroy
-    redirect_to studio_path(params[:studio_id])
+    redirect_to studio_path(params[:studio_id], anchor: 'reviewMessage')
+    flash[:alert2] = "投稿が削除されました"
   end
 
   private

@@ -4,7 +4,6 @@
 
 .user-wrap {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .user-item {
@@ -39,4 +38,17 @@
 
 .profile_image {
   border-radius: 50%;
+}
+
+.user-profile_name {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.user-withdrawal {
+  margin-top: 10px;
+}
+
+.follow-logo {
+  font-size: 20px;
 }

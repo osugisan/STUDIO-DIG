@@ -17,27 +17,48 @@
 </div>
 <div class="row user-wrap">
   <div class="col-lg-4 mx-auto text-center user-introduction">
-    <%= @user.introduction %>
+    <span>
+      <%= link_to follows_user_path(@user) do %>
+        <%= @user.followings.count %>
+      <% end %>
+      フォロー　|
+      <%= link_to followers_user_path(@user) do %>
+        　<%= @user.followers.count %>
+      <% end %>
+      フォロワー
   </div>
 </div>
-<% if @user == current_user %>
+<div class="row user-wrap">
+  <div class="col-lg-4 mx-auto text-center user-introduction">
+    <%= simple_format(@user.introduction) %>
+  </div>
+</div>
+<% if @user != current_user %>
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
-    <%= link_to "P R O F I L E　E D I T", edit_user_path(current_user), class: "btn btn-outline-success" %>
+    <% if @user.followed_by?(current_user) %>
+      <%= link_to "フォローを済み", relationships_path(@user), method: :delete, class: "btn btn-info" %>
+    <% else %>
+      <%= link_to "フォローする", relationships_path(@user), method: :post, class: "btn btn-outline-info" %>
+    <% end %>
   </div>
 </div>
 <% end %>
-<% if @user == current_user %>
+<% if @user == current_user || current_user.admin? %>
+<div classs="row user-wrap">
+  <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
+    <%= link_to "P R O F I L E　E D I T", edit_user_path(@user), class: "btn btn-outline-success" %>
+  </div>
+</div>
+<% end %>
 <div classs="row user-wrap">
   <div class="col-lg-3 col-sm-6 mx-auto text-center user-btn">
     <%= link_to "お 気 に 入 り の ス タ ジ オ", favorites_user_path(current_user), class: "btn btn-outline-danger" %>
   </div>
 </div>
-<% end %>
-
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-11 mx-auto col-sm-12">
     <h4 class="top-studio-logo">投稿したレビュー</h4>
   </div>
 </div>
@@ -45,13 +66,13 @@
 <%= render 'studios/top_reviews', reviews: @reviews %>
 
 <div class="row">
-  <div class="col-lg-12 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", reviews_user_path(@user) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-11 mx-auto col-sm-12">
     <h4 class="top-studio-logo">投稿したスタジオ</h4>
   </div>
 </div>
@@ -59,7 +80,7 @@
 <%= render 'studios/top_studios', studios: @studios %>
 
 <div class="row">
-  <div class="col-lg-12 text-right more-string">
+  <div class="col-lg-11 text-right more-string">
     <%= link_to "もっと見る...", studios_user_path(@user) %>
   </div>
 </div>

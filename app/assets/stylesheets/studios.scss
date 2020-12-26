@@ -7,7 +7,7 @@
 }
 
 .shop-name {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .new-card {
@@ -56,6 +56,7 @@
   text-align: center;
   margin: 40px 0;
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  padding: 10px 0;
 }
 
 .star-item {
@@ -90,7 +91,7 @@
 }
 
 .shop-tag {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .map-logo {
@@ -103,5 +104,15 @@
 }
 
 .edit-btn {
+  margin-top: 10px;
+}
+
+.sns-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.sns-btn {
   margin-top: 10px;
 }

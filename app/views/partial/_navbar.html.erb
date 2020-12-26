@@ -6,28 +6,28 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to new_studio_path do %>
-             <i class="fas fa-plus-square nav-link"></i>
+             <i class="fas fa-plus-square nav-link nav-icon"></i>
             <% end %>
           </li>
           <li class="nav-item active">
             <%= link_to  user_path(current_user) do %>
-              <i class="fas fa-user nav-link"></i>
+              <i class="fas fa-user nav-link nav-icon"></i>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item active">
             <%= link_to new_user_registration_path do %>
-             <i class="fas fa-user-plus nav-link"></i>
+             <i class="fas fa-user-plus nav-link nav-icon"></i>
             <% end %>
           </li>
           <li class="nav-item active">
             <%= link_to  new_user_session_path do %>
-              <i class="fas fa-sign-in-alt nav-link"></i>
+              <i class="fas fa-sign-in-alt nav-link nav-icon"></i>
             <% end %>
           </li>
         <% end %>
 
-        <li class="col-lg-4 offset-lg-4 col-sm-4 offset-sm-4 brand-center">
+        <li class="col-lg-4 offset-lg-4 col-4 offset-4 brand-center">
           <%= link_to root_path do %>
            <%= image_tag asset_path("logo.jpg"), class:"header-logo" %>
           <% end %>
@@ -43,24 +43,62 @@
       <ul class="drawer-menu">
         <li>
           <%= form_with url: searches_studios_url, method: :get, local: true do |f| %>
-            <div class="input-group">
+            <div class="input-group nav-keysearch">
               <%= f.text_field :search, placeholder: "キーワードを入力..", class: "form-control"%>
               <div class="input-group-prepend">
-                <%= f.submit "", class: "input-group-text" %>
+                <%= f.submit "〓", class: "input-group-text" %>
               </div>
             </div>
           <% end %>
         </li>
 
         <% if user_signed_in? %>
-          <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
-          <li><%= link_to 'マイページ', user_path(current_user), class: 'drawer-menu-item'%></li>
-          <li><%= link_to 'お気に入り', favorites_user_path(current_user), class: 'drawer-menu-item'%></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'drawer-menu-item'%></li>
+          <li>
+          <%= link_to root_path, class: 'drawer-menu-item' do %>
+            <i class="fas fa-home">　ホーム</i>
+          <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(current_user), class: 'drawer-menu-item' do %>
+              <i class="fas fa-info-circle">　マイページ</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path, class: 'drawer-menu-item' do %>
+              <i class="fas fa-user-circle">　メンバー一覧</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to favorites_user_path(current_user), class: 'drawer-menu-item' do %>
+              <i class="fas fa-thumbs-up">　お気に入り</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to maps_studios_path, class: 'drawer-menu-item' do %>
+              <i class="fas fa-compass">　現在地から探す</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'drawer-menu-item' do %>
+              <i class="fas fa-sign-out-alt">　ログアウト</i>
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to 'ホーム', root_path, class: 'drawer-menu-item'%></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: 'drawer-menu-item'%></li>
-          <li><%= link_to 'サインイン', new_user_session_path, class: 'drawer-menu-item'%></li>
+          <li>
+            <%= link_to root_path, class: 'drawer-menu-item' do %>
+              <i class="fas fa-home">　ホーム</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: 'drawer-menu-item' do %>
+              <i class="fas fa-user-plus nav-link">　新規登録</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class: 'drawer-menu-item' do %>
+              <i class="fas fa-sign-in-alt nav-link">　サインイン</i>
+            <% end %>
+          </li>
         <% end %>
 
       </ul>

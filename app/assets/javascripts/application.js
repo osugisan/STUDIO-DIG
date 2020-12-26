@@ -46,6 +46,18 @@ $(function () {
     });
 });
 
+$(function () {
+    $(document).ready(function() {
+        $("#notifyMessage2").stop().fadeIn(1200).delay(1500).fadeOut("slow");
+    });
+});
+
+$(function () {
+    $(document).ready(function() {
+        $("#notifyMessage3").stop().fadeIn(1200).delay(2500).fadeOut("slow");
+    });
+});
+
 // 星評価script
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {

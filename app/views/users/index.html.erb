@@ -1,0 +1,31 @@
+<%= render 'studios/info' %>
+
+<div classs="row user-wrap">
+  <div class="col-lg-3  col-12 mx-auto text-center user-item">
+    <h4>M E M B E R S</h4>
+  </div>
+</div>
+
+<% @users.each do |user| %>
+<div class="row user-wrap">
+  <div class="col-lg-2 mx-auto text-center">
+    <%= attachment_image_tag user, :profile_image, size:"100x100", class: "profile_image", fallback: "no_user.jpg" %>
+  </div>
+</div>
+<div class="row user-wrap">
+  <div class="col-lg-2 offset-lg-5 text-center user-profile_name">
+    <%= link_to user_path(user) do %>
+      <%= user.name %> さん
+    <% end %>
+  </div>
+  <div class="col-lg-1">
+    <% if user.followed_by?(current_user) %>
+      <%= image_tag asset_path("follow.png"), class:"follow-logo" %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<div class="col-lg-12 text-center">
+  <%= paginate @users %>
+</div>

@@ -1,4 +1,4 @@
-<div class="col-lg-10 offset-lg-1 col-sm-12">
+<div class="col-lg-11 mx-auto col-sm-12">
 <div class="swiper-container">
 <div class="swiper-wrapper">
 <% reviews.each do |review| %>
@@ -60,6 +60,11 @@ $( function() {
     var swiper = new Swiper('.swiper-container', {
       	spaceBetween: 10,
 	      slidesPerView: 4,
+	      breakpoints: {
+	        980: {
+	          slidesPerView: 1.5
+	        },
+	      },
 	      freeMode: true,
       	mousewheel: {
       		forceToAxis: false,
