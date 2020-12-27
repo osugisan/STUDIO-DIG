@@ -18,9 +18,9 @@
       <%= user.name %> さん
     <% end %>
   </div>
-  <div class="col-lg-1">
+  <div class="col-lg-1 follow-logo">
     <% if user.followed_by?(current_user) %>
-      <%= image_tag asset_path("follow.png"), class:"follow-logo" %>
+      <%= image_tag asset_path("follow.png"), class:"follow-logo-image" %>
     <% end %>
   </div>
 </div>
