@@ -13,12 +13,12 @@
   </div>
 </div>
 <div class="row user-wrap">
-  <div class="col-lg-2 offset-lg-5 text-center user-profile_name">
+  <div class="col-lg-2 offset-lg-5 col-6 offset-3 text-center user-profile_name">
     <%= link_to user_path(user) do %>
       <%= user.name %> さん
     <% end %>
   </div>
-  <div class="col-lg-1 follow-logo">
+  <div class="col-lg-1 col-2 follow-logo">
     <% if user.followed_by?(current_user) %>
       <%= image_tag asset_path("follow.png"), class:"follow-logo-image" %>
     <% end %>
