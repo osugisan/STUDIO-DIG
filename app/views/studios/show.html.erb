@@ -88,7 +88,9 @@
       <div class="d-flex flex-row review-name">
         <%= attachment_image_tag review.user, :profile_image, size:"35x35", class: "profile_image", fallback: "no_user.jpg" %>
         <h4 class="reviewer-name"><%= review.user.name %> さん</h4>
+        <!--感情分析スコア-->
         <%= render 'reviews/sentiment_score', review: review %>
+
       </div>
       <div class="review-body">
 
