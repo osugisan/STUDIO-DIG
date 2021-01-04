@@ -1,0 +1,18 @@
+<% unless review.score.nil? %>
+  <span class="sentiment-score">感情分析スコア <strong><%= review.score %></strong>点</span>
+<% end %>
+<span class="score-icon">
+  <% if review.score == nil %>
+
+  <% elsif review.score <= -0.6 %>
+    <i class="far fa-tired"></i>
+  <% elsif review.score <= -0.3 %>
+    <i class="far fa-sad-tear"></i>
+  <% elsif review.score >= 0.6 %>
+    <i class="far fa-grin-squint"></i>
+  <% elsif review.score >= 0.3 %>
+    <i class="far fa-smile-wink"></i>
+  <% else %>
+    <i class="far fa-meh"></i>
+  <% end %>
+</span>

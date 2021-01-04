@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @studio = Studio.find(params[:studio_id])
     @review = current_user.reviews.new(review_params)
     @review.studio_id = @studio.id
+    @review.score = Language.get_data(review_params[:body])
     if @review.save
       redirect_to studio_path(@studio, anchor: 'reviewMessage')
       flash[:notice2] = "投稿が保存されました"

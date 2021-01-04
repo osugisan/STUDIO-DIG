@@ -65,3 +65,38 @@
 #star {
   margin-top: 10px;
 }
+
+textarea.form-control {
+  height: 150px!important;
+}
+
+.sentiment-score {
+  margin-right: 15px;
+  margin: 0 0 0 auto;
+  padding-top: 8px;
+}
+
+.sentiment-info {
+  font-size:12px;
+}
+
+.score-icon {
+  margin: 0 20px;
+  font-size: 35px;
+}
+
+.fa-tired {
+  color: #5D99FF;
+}
+
+.fa-sad-tear {
+  color: #5D99FF;
+}
+
+.fa-grin-squint {
+  color: #FF69A3;
+}
+
+.fa-smile-wink {
+  color: #FF69A3;
+}
