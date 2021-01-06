@@ -81,12 +81,16 @@
     <%= render 'partial/flash_review' %>
 
     <h4><i class="far fa-comments"></i>みんなの口コミ</h4>
-    <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span>
+    <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span><br>
+    <span class="sentiment-info">※感情分析スコアとは？<br>AIが、あなたの口コミから感情を判定します。ネガティブ評価には” − ”点、ポジティブ評価には” + ”点(-1.0〜1.0点の範囲)で判定します。</span>
     <% @reviews.each do |review| %>
     <div class="card border-light review-content">
       <div class="d-flex flex-row review-name">
         <%= attachment_image_tag review.user, :profile_image, size:"35x35", class: "profile_image", fallback: "no_user.jpg" %>
         <h4 class="reviewer-name"><%= review.user.name %> さん</h4>
+        <!--感情分析スコア-->
+        <%= render 'reviews/sentiment_score', review: review %>
+
       </div>
       <div class="review-body">
 
@@ -148,7 +152,7 @@
           <%= f.text_field :title, class: "form-control", placeholder: "一言で言うと.." %>
 
           <%= f.label :body, "コメント" %>
-          <%= f.text_area :body, class: "form-control", placeholder: "良かった点、悪かった点など具体的に！" %>
+          <%= f.text_area :body, class: "form-control", placeholder: "良かった点、悪かった点など具体的に！(AIであなたのレビューの感情判定します！)" %>
 
           <div class="col-lg-4 mx-auto">
             <%= f.submit "口コミを投稿", class: "form-control btn btn-success mt-3" %>
