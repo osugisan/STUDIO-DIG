@@ -66,12 +66,60 @@ RSpec.describe "Users", type: :system do
   describe "マイページ" do
     before do
       login(user)
+      create_list(:studio, 5, user: user)
+      create_list(:review, 5, user: user)
       visit user_path(user)
     end
 
     context "ページレイアウト" do
       it "「P　R　O　F　I　L　E」の文字が表示されること" do
         expect(page).to have_content "P　R　O　F　I　L　E"
+      end
+      it "自分以外のユーザーに編集ボタンが表示されないこと" do
+        visit user_path(other_user)
+        expect(page).not_to have_link "P R O F I L E　E D I T"
+      end
+      it "スタジオ情報が表示されていること" do
+        Studio.take(5).each do |studio|
+          expect(page).to have_link studio.name
+          expect(page).to have_content studio.address
+        end
+      end
+      it "レビュー情報が表示されていること" do
+        Review.take(5).each do |review|
+          expect(page).to have_content review.title
+          expect(page).to have_content review.body
+        end
+      end
+    end
+
+  end
+  
+  describe "ユーザー編集ページ" do
+    before do
+      login(user)
+      visit edit_user_path(user)
+    end
+    
+    context "ページレイアウト" do
+      it "自分の編集ページに退会ボタンが存在すること" do
+        expect(page).to have_link "退会する"
+      end
+    end
+  end
+  
+  describe "ユーザー一覧ページ" do
+    before do
+      login(user)
+      create_list(:user, 6)
+      visit users_path
+    end
+    context "ページレイアウト" do
+      it "M E M B E R Sの文字が表示されること" do
+        expect(page).to have_content "M E M B E R S"
+      end
+      it "ページネーションが表示されること" do
+        expect(page).to have_css ".pagination"
       end
     end
   end
