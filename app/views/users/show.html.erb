@@ -37,7 +37,7 @@
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
     <% if @user.followed_by?(current_user) %>
-      <%= link_to "フォローを済み", relationships_path(@user), method: :delete, class: "btn btn-info" %>
+      <%= link_to "フォロー済み", relationships_path(@user), method: :delete, class: "btn btn-info" %>
     <% else %>
       <%= link_to "フォローする", relationships_path(@user), method: :post, class: "btn btn-outline-info" %>
     <% end %>
