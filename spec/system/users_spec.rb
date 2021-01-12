@@ -4,6 +4,8 @@ RSpec.describe "Users", type: :system do
   let!(:user) { create(:user) }
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
+  let!(:studio) { create(:studio, user: user) }
+  let!(:review) { create(:review, user: user, studio: studio)}
 
   describe "ユーザー新規登録ページ" do
     before do
@@ -67,7 +69,7 @@ RSpec.describe "Users", type: :system do
     before do
       login(user)
       create_list(:studio, 5, user: user)
-      create_list(:review, 5, user: user)
+      create_list(:review, 5, user: user, studio: studio)
       visit user_path(user)
     end
 
@@ -94,20 +96,20 @@ RSpec.describe "Users", type: :system do
     end
 
   end
-  
+
   describe "ユーザー編集ページ" do
     before do
       login(user)
       visit edit_user_path(user)
     end
-    
+
     context "ページレイアウト" do
       it "自分の編集ページに退会ボタンが存在すること" do
         expect(page).to have_link "退会する"
       end
     end
   end
-  
+
   describe "ユーザー一覧ページ" do
     before do
       login(user)
