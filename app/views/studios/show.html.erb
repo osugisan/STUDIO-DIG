@@ -24,6 +24,7 @@
             </div>
           <% end %>
 
+        <!--スタジオ詳細情報-->
         <span class="shop-explanation"><%= simple_format(@studio.explanation) %></span>
         <div class="shop-tag">
           <% @studio.tags.each do |tag| %>
@@ -33,7 +34,7 @@
 
         <div class="edit-btn">
           <%= link_to "スタジオ情報を編集する", edit_studio_path(@studio), class: "btn btn-info btn-sm" %>
-          <% if user_signed_in? && @studio.user == current_user || user_signed_in? && current_user.admin? %>
+          <% if user_signed_in? && current_user.admin_or_me?(@studio.user.id) %>
             <%= link_to "スタジオを削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger btn-sm" %>
           <% end %>
         </div>
@@ -83,11 +84,14 @@
     <h4><i class="far fa-comments"></i>みんなの口コミ</h4>
     <span><i class="fas fa-user-friends"></i>口コミの数：<%= @studio.reviews.count %>件</span><br>
     <span class="sentiment-info">※感情分析スコアとは？<br>AIが、あなたの口コミから感情を判定します。ネガティブ評価には” − ”点、ポジティブ評価には” + ”点(-1.0〜1.0点の範囲)で判定します。</span>
+
+    <!--口コミ詳細-->
     <% @reviews.each do |review| %>
     <div class="card border-light review-content">
       <div class="d-flex flex-row review-name">
         <%= attachment_image_tag review.user, :profile_image, size:"35x35", class: "profile_image", fallback: "no_user.jpg" %>
         <h4 class="reviewer-name"><%= review.user.name %> さん</h4>
+
         <!--感情分析スコア-->
         <%= render 'reviews/sentiment_score', review: review %>
 
@@ -117,7 +121,7 @@
       <div class="row">
         <div class="review-bottom col-lg-8">
           <strong>投稿日：<%= time_ago_in_words(review.created_at).upcase + "前　" %></strong>
-          <% if review.user == current_user || user_signed_in? && current_user.admin? %>
+          <% if user_signed_in? && current_user.admin_or_me?(review.user.id) %>
             <%= link_to " 　削除", studio_review_path(review.studio, review), class: "review-delete-button", method: :delete, data: {confirm: "削除しますか？"} %>
           <% end %>
         </div>
@@ -131,8 +135,12 @@
       </div>
     </div>
     <% end %>
+    <!--口コミ詳細-->
+    
   </div>
   <div class="col-lg-9 mx-auto">
+    
+    <!--口コミ投稿フォーム-->
     <div class="card border-light review-form">
       <div class="col-lg-11 mx-auto">
         <h4><i class="far fa-edit"></i> <%= @studio.name %>の口コミを投稿</h4>
@@ -161,7 +169,11 @@
         <% end %>
       </div>
     </div>
+    <!--口コミ投稿フォーム-->
+    
   </div>
+  
+  <!--スタジオ地図-->
   <div class="col-lg-9 mx-auto map-logo">
     <h4><i class="fas fa-map-marker-alt"></i> <%= @studio.name %>の地図</h4>
   </div>

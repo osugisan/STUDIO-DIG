@@ -23,4 +23,12 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
+  
+  def me?(user_id)
+    id == user_id
+  end
+  
+  def admin_or_me?(user_id)
+    admin? || me?(user_id)
+  end
 end
