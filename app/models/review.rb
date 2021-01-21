@@ -10,4 +10,8 @@ class Review < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
+
+  def self.average_rank(digits = 1)
+    average(:rank).to_f.round(digits)
+  end
 end

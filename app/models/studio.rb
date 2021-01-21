@@ -20,13 +20,9 @@ class Studio < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def Studio.search(search)
-    if search.blank?
-      Studio.all
-    else
-    Studio.where([
-      'name LIKE ? OR address LIKE ?',
-      "%#{search}%", "%#{search}%"])
-    end
+  def self.search(search)
+    return all if search.blank?
+
+    where(['name LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%"])
   end
 end

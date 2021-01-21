@@ -33,7 +33,7 @@
     <%= simple_format(@user.introduction) %>
   </div>
 </div>
-<% if @user != current_user %>
+<% if !@user.me?(current_user.id) %>
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
     <% if @user.followed_by?(current_user) %>
@@ -44,7 +44,7 @@
   </div>
 </div>
 <% end %>
-<% if @user == current_user || current_user.admin? %>
+<% if current_user.admin_or_me?(@user.id) %>
 <div classs="row user-wrap">
   <div class="col-lg-4 col-sm-6 mx-auto text-center user-btn">
     <%= link_to "P R O F I L E　E D I T", edit_user_path(@user), class: "btn btn-outline-success" %>
