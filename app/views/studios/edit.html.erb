@@ -5,6 +5,7 @@
   <div class="form-wrap">
     <%= form_with model: @studio, local: true do |f| %>
 
+    <!--アラートメッセージ-->
     <% if @studio.errors.any?%>
       <div class="error-message">
         <ul>
@@ -60,7 +61,7 @@
       <div class="action-1">
         <%= f.submit "更新する", class: "btn btn-primary w-100" %>
       </div>
-      <% if user_signed_in? && @studio.user == current_user || current_user.admin? %>
+      <% if user_signed_in? && current_user.admin_or_me?(@studio.user.id) %>
         <div class="actions">
           <%= link_to "削除する", studio_path(@studio), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger w-100" %>
         </div>

@@ -14,6 +14,7 @@ ja:
       studio:
         name: 'スタジオ名'
         address: '住所'
+        explanation: 'おすすめポイント'
       review:
         rank: '評価'
         title: 'タイトル'
