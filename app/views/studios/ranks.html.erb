@@ -37,7 +37,7 @@
             <!--星評価平均点-->
             <div class="star-item">
               <div id="star_ave_<%= studio.id %>"></div>
-              <div class="star-point"><%= studio.reviews.average(:rank).to_f.round(1) %></div>
+              <div class="star-point"><%= studio.reviews.average_rank %></div>
             </div>
             <script>
             $('#star_ave_<%= studio.id %>').raty({
