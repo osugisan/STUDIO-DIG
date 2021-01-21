@@ -10,9 +10,11 @@ class Studio < ApplicationRecord
 
   attachment :studio_image
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
   validates :address, presence: true, uniqueness: true
   validates :url, uniqueness: true, allow_blank: true
+  validates :explanation, length: { maximum: 200 }
+  validates :user_id, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

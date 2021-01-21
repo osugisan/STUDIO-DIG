@@ -118,7 +118,7 @@
         <div class="review-bottom col-lg-8">
           <strong>投稿日：<%= time_ago_in_words(review.created_at).upcase + "前　" %></strong>
           <% if review.user == current_user || user_signed_in? && current_user.admin? %>
-            <%= link_to " 　削除", studio_review_path(review.studio, review), method: :delete, data: {confirm: "削除しますか？"} %>
+            <%= link_to " 　削除", studio_review_path(review.studio, review), class: "review-delete-button", method: :delete, data: {confirm: "削除しますか？"} %>
           <% end %>
         </div>
 
