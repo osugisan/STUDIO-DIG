@@ -31,8 +31,23 @@
 ## 設計書
 
 ### 機能一覧
-
-https://docs.google.com/spreadsheets/d/1LrGEUx_PwEHfq_nJ-qlePKWhF87yxnPvhZaY6YdyKjA/edit#gid=0
+## 使用技術
+* HTML
+* CSS
+* Javascript / JQuery / Ajax
+* Ruby 2.5.3 / Slim記法
+* Ruby on Rails 5.2.4 (RSpec / Rubocopによる動的静的テスト等も含む)
+* MySQL
+* Linux (各種コマンド操作)
+* Nginx (Web Server)
+* Puma (Application Server)
+* Git / GitHub (pull request, Issues 等による擬似チーム開発)
+* Docker / docker-compose
+* AWS各種サービス
+* CircleCI/CD
+* Capistrano
+* AWS
+<br>  EC2 ( Amazon Linux 2 ) / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB
 
 ## 開発環境
 
