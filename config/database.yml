@@ -11,15 +11,15 @@ default: &default
   username: root
   password: password
   socket: /tmp/mysql.sock
+  host: db
 
 
 development:
   <<: *default
   database: my_new_gear_development
-  username: root　
+  username: root
   password: password
   database: docker_development
-  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
