@@ -25,7 +25,7 @@ RSpec.describe "user関連リクエスト", type: :request do
       get user_path(user)
       expect(response).to redirect_to new_user_session_url
     end
-  end  
+  end
 
   context "お気に入りスタジオページ" do
     it "ログインしている場合、レスポンスが正常に表示されること" do
