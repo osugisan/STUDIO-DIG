@@ -1,4 +1,4 @@
 module StudiosHelper
-  def
+  def method_name
   end
 end
