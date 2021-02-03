@@ -2,7 +2,7 @@
 
 ## アプリケーション紹介動画
 
-<img src="/images/readme.PNG" width="750"/>
+<img src="readme.PNG" width="750"/>
 
 ## サイト概要
 
