@@ -2,7 +2,7 @@
 
 ## アプリケーション紹介動画
 
-[紹介サムネ](/images/readme.PNG)
+![紹介サムネ](/images/readme.PNG)
 
 ## サイト概要
 
