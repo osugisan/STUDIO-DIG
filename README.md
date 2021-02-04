@@ -37,6 +37,11 @@ Google Maps APIを導入し、投稿した住所情報から店舗地図の表�
 さらには、世のバンドマンや個人で楽器を演奏する方たちにとっても、役立つのではないかと思いこちらのテーマを選びました。<br>
 
 ## 設計書
+ER図<br>
+<img src="ER.jpg" width="750"/><br>
+<br>
+ワイヤーフレーム<br>
+[https://assets.adobe.com/public/9a076445-08e2-4b90-6453-f78b19c15b73](https://assets.adobe.com/public/9a076445-08e2-4b90-6453-f78b19c15b73)
 
 ## 機能一覧
 * ユーザー登録・ログイン機能（gem:deviseを使用）
