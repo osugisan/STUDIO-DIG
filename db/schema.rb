@@ -12,34 +12,34 @@
 
 ActiveRecord::Schema.define(version: 2021_01_04_102033) do
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "studio_id", null: false
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studio_id"], name: "index_favorites_on_studio_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "review_id"
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_likes_on_review_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "studio_id", null: false
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.float "rank", null: false
@@ -50,17 +50,17 @@ ActiveRecord::Schema.define(version: 2021_01_04_102033) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "studio_tags", force: :cascade do |t|
-    t.integer "studio_id", null: false
-    t.integer "tag_id", null: false
+  create_table "studio_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "studio_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studio_id"], name: "index_studio_tags_on_studio_id"
     t.index ["tag_id"], name: "index_studio_tags_on_tag_id"
   end
 
-  create_table "studios", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "studios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "studio_image_id"
     t.string "name", null: false
     t.string "address", null: false
@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 2021_01_04_102033) do
     t.index ["user_id"], name: "index_studios_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -95,4 +95,13 @@ ActiveRecord::Schema.define(version: 2021_01_04_102033) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "studios"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
+  add_foreign_key "reviews", "studios"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "studio_tags", "studios"
+  add_foreign_key "studio_tags", "tags"
+  add_foreign_key "studios", "users"
 end
