@@ -5,5 +5,6 @@ FactoryBot.define do
     title { Faker::Lorem.characters(number:10) }
     body { Faker::Lorem.characters(number:20) }
     rank { 5 }
+    score {0}
   end
 end
