@@ -9,9 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
-#  ②注意！！ circleCIは仮想環境を構築するので、そのときに使うデータベースを指定する必要があります。
           - RAILS_ENV: 'test'
-      # Mysqlのバージョン5.6で動かしていたため、5.6を指定
       - image: circleci/mysql:5.7
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -44,14 +42,12 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-# ②ちょっと無理やりですが、database.ymlとdatabase.yml.ciを入れ替える記述です。
       - run: mv config/database.yml.ci config/database.yml
 
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
-# rspecを走らせる記述です。
       # run tests!
       - run:
           name: run tests
@@ -60,8 +56,6 @@ jobs:
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
-
-# ③ここでRspecJunitFormatterというgemをインストールしていないとエラーになります。gemfileに記述しましょう。
             bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
