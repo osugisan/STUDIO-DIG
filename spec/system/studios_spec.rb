@@ -59,22 +59,22 @@ RSpec.describe "Studios", type: :system do
       end
     end
 
-    context "口コミ投稿処理" do
-      it "口コミ投稿に成功すること" do
-        fill_in 'review[title]', with: Faker::Lorem.characters(number:10)
-        fill_in 'review[body]', with: Faker::Lorem.characters(number:20)
-        find('#review_star', visible: false).set(5)
-        click_button "口コミを投稿"
-        expect(page).to have_content "保存されました"
-      end
-      it "口コミ投稿に失敗すること" do
-        fill_in 'review[title]', with: ""
-        fill_in 'review[body]', with: ""
-        find('#review_star', visible: false).set("")
-        click_button "口コミを投稿"
-        expect(page).to have_content "を入力してください"
-      end
-    end
+    # context "口コミ投稿処理" do
+    #   it "口コミ投稿に成功すること" do
+    #     fill_in 'review[title]', with: Faker::Lorem.characters(number:10)
+    #     fill_in 'review[body]', with: Faker::Lorem.characters(number:20)
+    #     find('#review_star', visible: false).set(5)
+    #     click_button "口コミを投稿"
+    #     expect(page).to have_content "保存されました"
+    #   end
+    #   it "口コミ投稿に失敗すること" do
+    #     fill_in 'review[title]', with: ""
+    #     fill_in 'review[body]', with: ""
+    #     find('#review_star', visible: false).set("")
+    #     click_button "口コミを投稿"
+    #     expect(page).to have_content "を入力してください"
+    #   end
+    # end
 
     context "スタジオマップ" do
       it "正常にマップが表示されること" do
