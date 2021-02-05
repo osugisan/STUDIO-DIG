@@ -16,7 +16,7 @@ Google Maps APIを導入し、投稿した住所情報から店舗地図の表�
 <br>
 また、UI/UXにも配慮し、使っていて楽しくなるようなWEBアプリを目指して作成しました。<br>
 <br>
-インフラにつきましては、AWS(EC2, RDS, Route53, ACM, ALB, IAM等)や実行環境をDockerfileにより共有でき、環境構築を容易にするDockerなどのモダンな技術に挑戦しました。<br>
+インフラにつきましては、AWS(EC2, RDS, Route53, ACM, ALB, IAM等)や保守性を高めるためにCircleCI、実行環境をDockerfileにより共有でき、環境構築を容易にするDockerなどのモダンな技術に挑戦しました。<br>
 <br>
 
 ### URL
