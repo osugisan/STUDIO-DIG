@@ -16,7 +16,7 @@ Google Maps APIを導入し、投稿した住所情報から店舗地図の表�
 <br>
 また、UI/UXにも配慮し、使っていて楽しくなるようなWEBアプリを目指して作成しました。<br>
 <br>
-インフラにつきましては、AWS(EC2, RDS, Route53, ACM, ALB, IAM等)や保守性を高めるためにCircleCI、実行環境をDockerfileにより共有でき、環境構築を容易にするDockerなどのモダンな技術に挑戦しました。<br>
+インフラにつきましては、AWS(EC2, RDS, Route53, ACM, ALB, IAM, S3等)や保守性を高めるためにCircleCI、実行環境をDockerfileにより共有でき、環境構築を容易にするDockerなどのモダンな技術に挑戦しました。<br>
 <br>
 
 ### URL
@@ -51,7 +51,7 @@ ER図<br>
 * 投稿一覧、投稿詳細表示機能
 * 投稿管理機能
 * 投稿編集機能
-* ページネーション機能(gem:kanimari)
+* ページネーション機能(gem:kaminari)
 * スタジオお気に入り機能
 * 口コミ投稿機能
 * 星評価機能（jQueryライブラリ使用）
@@ -72,17 +72,16 @@ ER図<br>
 - HTML
 - CSS
 - Javascript / JQuery / Ajax
-- Ruby 2.5.3 / Slim 記法
+- Ruby 2.5.3
 - Ruby on Rails 5.2.4 (RSpec / Rubocop による動的静的テスト等も含む)
 - MySQL
 - Linux (各種コマンド操作)
 - Nginx (Web Server)
 - Puma (Application Server)
-- Git / GitHub (pull request, Issues 等による擬似チーム開発)
+- Git / GitHub (pull request等による擬似チーム開発)
 - Docker / docker-compose
 - AWS 各種サービス
-- CircleCI/CD
-- Capistrano
+- CircleCI
 - AWS
   <br> EC2 ( Amazon Linux 2 ) / RDS(MySQL) / S3 / VPC / IAM / Route53 / ACM / ALB
 
@@ -92,7 +91,7 @@ ER図<br>
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Cloud9, VScode
 
 ## 使用素材
 
